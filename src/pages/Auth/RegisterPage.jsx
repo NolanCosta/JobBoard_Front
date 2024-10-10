@@ -4,6 +4,8 @@ import logo from "../../assets/image/logoNM.png";
 import "../../assets/css/register.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useValidator from "../../components/custom/useValidator.jsx";
+import Spinner from "../../components/loader/Spinner.jsx";
 
 function CompanyPage() {
   const [lastname, setLastname] = useState("");
@@ -91,6 +93,7 @@ function CompanyPage() {
               name="lastname"
               placeholder="Nom..."
               onChange={handleChange}
+              {...useValidator(errors, "lastname")}
               required
             />
             <input
@@ -100,6 +103,7 @@ function CompanyPage() {
               name="firstname"
               placeholder="Prénom..."
               onChange={handleChange}
+              {...useValidator(errors, "firsname")}
               required
             />
           </div>
@@ -111,6 +115,7 @@ function CompanyPage() {
               name="email"
               placeholder="Email..."
               onChange={handleChange}
+              {...useValidator(errors, "email")}
               required
             />
             <input
@@ -120,6 +125,7 @@ function CompanyPage() {
               name="phone"
               placeholder="Téléphone..."
               onChange={handleChange}
+              {...useValidator(errors, "phone")}
               pattern="[0-9]{10}$"
               required
             />
@@ -132,6 +138,7 @@ function CompanyPage() {
               name="password"
               placeholder="Mot de passe..."
               onChange={handleChange}
+              {...useValidator(errors, "password")}
               required
             />
             <input
@@ -141,12 +148,17 @@ function CompanyPage() {
               name="confirmPassword"
               placeholder="Confirmer votre mot de passe..."
               onChange={handleChange}
+              {...useValidator(errors, "confirmPassword")}
               require
             />
           </div>
-          <button type="submit" className="buttonForm">
-            S'inscrire
-          </button>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <button type="submit" className="buttonForm">
+              S'inscrire
+            </button>
+          )}
         </form>
       </div>
       <Footer />
