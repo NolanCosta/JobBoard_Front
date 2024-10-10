@@ -6,7 +6,7 @@
   height: 100vh;
 }
 
-.logo {
+.authLogo {
   width: 40%;
   height: auto;
   margin-bottom: 20px;
@@ -21,7 +21,7 @@
   height: 50%;
 }
 
-.formElement {
+.formRegisterElement {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -31,7 +31,7 @@
   margin-bottom: 20px;
 }
 
-.inputForm {
+.inputFormRegister {
   width: 26.5%;
   height: 100%;
   border-radius: 20px;
@@ -39,12 +39,12 @@
   padding: 10px;
 }
 
-.inputForm::placeholder {
+.inputFormRegister::placeholder {
   color: #000;
   font-weight: bold;
 }
 
-.buttonForm {
+.buttonFormRegister {
   width: 60%;
   height: 10%;
   border-radius: 20px;
@@ -56,6 +56,6 @@
   cursor: pointer;
 }
 
-.buttonForm:hover {
+.buttonFormRegister:hover {
   box-shadow: 0 0 10px grey;
 }

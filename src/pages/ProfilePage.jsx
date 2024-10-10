@@ -5,6 +5,7 @@ function ProfilePage() {
   return (
     <div>
       <Header />
+      <button>Se déconnecter</button>
     </div>
   );
 }

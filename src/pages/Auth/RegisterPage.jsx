@@ -83,13 +83,13 @@ function CompanyPage() {
   return (
     <div>
       <div className="container">
-        <img className="logo" src={logo} alt="Logo" />
+        <img className="authLogo" src={logo} alt="Logo" />
         <form className="formRegister" onSubmit={(e) => handleSubmit(e)}>
-          <div className="formElement">
+          <div className="formRegisterElement">
             <input
               type="text"
               id="lastname"
-              className="inputForm"
+              className="inputFormRegister"
               name="lastname"
               placeholder="Nom..."
               onChange={handleChange}
@@ -99,7 +99,7 @@ function CompanyPage() {
             <input
               type="text"
               id="firsname"
-              className="inputForm"
+              className="inputFormRegister"
               name="firstname"
               placeholder="Prénom..."
               onChange={handleChange}
@@ -107,11 +107,11 @@ function CompanyPage() {
               required
             />
           </div>
-          <div className="formElement">
+          <div className="formRegisterElement">
             <input
               type="email"
               id="email"
-              className="inputForm"
+              className="inputFormRegister"
               name="email"
               placeholder="Email..."
               onChange={handleChange}
@@ -121,7 +121,7 @@ function CompanyPage() {
             <input
               type="tel"
               id="phone"
-              className="inputForm"
+              className="inputFormRegister"
               name="phone"
               placeholder="Téléphone..."
               onChange={handleChange}
@@ -130,11 +130,11 @@ function CompanyPage() {
               required
             />
           </div>
-          <div className="formElement">
+          <div className="formRegisterElement">
             <input
               type="password"
               id="password"
-              className="inputForm"
+              className="inputFormRegister"
               name="password"
               placeholder="Mot de passe..."
               onChange={handleChange}
@@ -144,7 +144,7 @@ function CompanyPage() {
             <input
               type="password"
               id="confirmPassword"
-              className="inputForm"
+              className="inputFormRegister"
               name="confirmPassword"
               placeholder="Confirmer votre mot de passe..."
               onChange={handleChange}
@@ -155,7 +155,7 @@ function CompanyPage() {
           {loading ? (
             <Spinner />
           ) : (
-            <button type="submit" className="buttonForm">
+            <button type="submit" className="buttonFormRegister">
               S'inscrire
             </button>
           )}

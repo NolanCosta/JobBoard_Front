@@ -7,6 +7,7 @@ import {
 import React, { useState, useEffect } from "react";
 
 import RegisterPage from "./pages/Auth/RegisterPage";
+import LoginPage from "./pages/Auth/LoginPage";
 import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import CompanyPage from "./pages/CompanyPage";
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/company" element={<CompanyPage />} />
