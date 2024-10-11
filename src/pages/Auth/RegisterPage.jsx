@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/layout/footer.jsx";
 import logo from "../../assets/image/logoNM.png";
 import "../../assets/css/register.css";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useValidator from "../../components/custom/useValidator.jsx";
 import Spinner from "../../components/loader/Spinner.jsx";
+import { AuthContext } from "../../components/context/AuthContext.jsx";
 
 function CompanyPage() {
   const [lastname, setLastname] = useState("");
@@ -17,6 +18,11 @@ function CompanyPage() {
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { accessToken } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (accessToken) navigate("/home");
+  }, [accessToken]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,45 +43,49 @@ function CompanyPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors(null);
-    setLoading(true);
-    const formData = new FormData();
-    formData.append("lastname", lastname);
-    formData.append("firstname", firstname);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("password", password);
-    try {
-      const options = {
-        method: "POST",
-        body: formData,
-      };
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/user/register`,
-        options
-      );
+    if (password !== confirmPassword) {
+      toast.error("Les mots de passe ne correspondent pas");
+    } else {
+      setErrors(null);
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("lastname", lastname);
+      formData.append("firstname", firstname);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("password", password);
+      try {
+        const options = {
+          method: "POST",
+          body: formData,
+        };
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/user/register`,
+          options
+        );
 
-      setLoading(false);
+        setLoading(false);
 
-      setLastname("");
-      setFirstname("");
-      setEmail("");
-      setPhone("");
-      setPassword("");
-      setConfirmPassword("");
+        setLastname("");
+        setFirstname("");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+        setConfirmPassword("");
 
-      if (response.ok) {
-        const data = await response.json();
-        toast.success(data.message);
-        navigate("/login");
-      } else {
-        const errorData = await response.json();
-        setErrors(errorData.errors);
-      }
-    } catch (error) {
-      setLoading(false);
-      if (error?.response?.status === 422) {
-        setErrors(error.response.data.errors);
+        if (response.ok) {
+          const data = await response.json();
+          toast.success(data.message);
+          navigate("/login");
+        } else {
+          const errorData = await response.json();
+          setErrors(errorData.errors);
+        }
+      } catch (error) {
+        setLoading(false);
+        if (error?.response?.status === 422) {
+          setErrors(error.response.data.errors);
+        }
       }
     }
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/layout/footer.jsx";
 import logo from "../../assets/image/logoNM.png";
 import "../../assets/css/login.css";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useValidator from "../../components/custom/useValidator.jsx";
 import Spinner from "../../components/loader/Spinner.jsx";
+import { AuthContext } from "../../components/context/AuthContext.jsx";
 
 function CompanyPage() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,12 @@ function CompanyPage() {
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { accessToken, setAccessToken, setCurrentUser } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    if (accessToken) navigate("/home");
+  }, [accessToken]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +52,9 @@ function CompanyPage() {
       setLoading(false);
 
       if (response.ok) {
+        localStorage.setItem("currentToken", JSON.stringify(data.token));
+        setAccessToken(data.token);
+        setCurrentUser(data.user);
         setEmail("");
         setPassword("");
         toast.success(data.message);
