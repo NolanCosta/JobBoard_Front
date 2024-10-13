@@ -57,7 +57,7 @@ function ProfilePage() {
           </div>
           <div className="separateDivProfile"></div>
           <div className="part3Profile">
-            {currentUser?.company ? (
+            {!currentUser?.company_id ? (
               <button className="companyButtonProfile">
                 <img
                   className="companyButtonImg1Profile"
