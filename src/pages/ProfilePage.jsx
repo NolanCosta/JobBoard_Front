@@ -67,7 +67,10 @@ function ProfilePage() {
                 Créer ou rejoindre une entreprise
               </a>
             ) : (
-              <a className="companyLinkProfile">
+              <a
+                className="companyLinkProfile"
+                href={`/company/${currentUser?.company_id}`}
+              >
                 <img
                   className="companyLinkImg2Profile"
                   src={showLogo}
