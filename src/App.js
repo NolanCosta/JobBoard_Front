@@ -12,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import CompanyPage from "./pages/CompanyPage";
 import ProfilePage from "./pages/ProfilePage";
+import AdminUserPage from "./pages/AdminUserPage";
 import CreateCompanyPage from "./pages/CreateCompanyPage";
 import { AuthContext } from "./components/context/AuthContext";
 
@@ -57,6 +58,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<HomePage />} />
@@ -64,6 +66,7 @@ function App() {
           <Route path="/company/:id" element={<CompanyPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/create-company" element={<CreateCompanyPage />} />
+          <Route path="/Admin" element={<AdminUserPage />} />
         </Routes>
       </Router>
     </AuthContext.Provider>

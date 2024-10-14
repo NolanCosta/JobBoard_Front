@@ -1,0 +1,19 @@
+/* css page useradmin  */
+
+.size-table{
+        width: 80vw;    
+        margin-left: 10vw;
+}
+
+.table{
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.nav-admin{
+
+    background-color: beige;
+    height: 50px;
+    width: 100%;
+}
