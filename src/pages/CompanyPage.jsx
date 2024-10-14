@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../components/context/AuthContext.jsx";
 import Header from "../components/layout/header.jsx";
 import Footer from "../components/layout/footer.jsx";
 import "../assets/css/company.css";
 
 function CompanyPage() {
   const { id } = useParams();
+  const { accessToken, currentUser } = useContext(AuthContext);
   const [company, setCompany] = useState([]);
 
   const getCompany = async () => {
@@ -19,6 +21,26 @@ function CompanyPage() {
   useEffect(() => {
     getCompany();
   }, []);
+
+  const handleDelete = async () => {
+    try {
+      const option = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/company/delete/${id}`,
+        option
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -44,9 +66,19 @@ function CompanyPage() {
             <p>{company.aboutUs}</p>
           </div>
         </div>
-        <a className="companyAdvertisementButton" href="/home">
-          Voir les annonces
-        </a>
+        <div className="companyAdvertisementButtons">
+          <a className="companyAdvertisementButtonShow" href="/home">
+            Voir les annonces
+          </a>
+          {currentUser?.id === company.user_id && (
+            <button
+              className="companyAdvertisementButtonDelete"
+              onClick={handleDelete}
+            >
+              Supprimer mon entreprise
+            </button>
+          )}
+        </div>
       </div>
       <Footer />
     </div>
