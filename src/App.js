@@ -12,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import CompanyPage from "./pages/CompanyPage";
 import ProfilePage from "./pages/ProfilePage";
+import CreateCompanyPage from "./pages/CreateCompanyPage";
 import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
@@ -60,8 +61,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/jobs" element={<JobsPage />} />
-          <Route path="/company" element={<CompanyPage />} />
+          <Route path="/company/:id" element={<CompanyPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/create-company" element={<CreateCompanyPage />} />
         </Routes>
       </Router>
     </AuthContext.Provider>
