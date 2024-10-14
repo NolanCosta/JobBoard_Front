@@ -97,7 +97,7 @@
   align-items: center;
 }
 
-.companyButtonProfile {
+.companyLinkProfile {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -108,14 +108,16 @@
   border: 2px solid black;
   border-radius: 20px;
   padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.companyButtonImg1Profile {
+.companyLinkImg1Profile {
   width: 10%;
   height: auto;
 }
 
-.companyButtonImg2Profile {
+.companyLinkImg2Profile {
   width: 15%;
   height: auto;
 }

@@ -1,0 +1,148 @@
+.createCompanyContainer {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.createCompanyButtons {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.activeButton,
+.classicButton {
+  width: 60%;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.activeButton:hover,
+.classicButton:hover {
+  box-shadow: 0 0 10px grey;
+}
+
+.classicButton {
+  background-color: white;
+  color: black;
+}
+
+.activeButton {
+  background-color: black;
+  color: white;
+}
+
+.separateDivCreateCompany {
+  width: 1px;
+  height: 100%;
+  border-left: 1px solid black;
+}
+
+.createCompanyForm,
+.joinCompanyForm {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.createCompanyInputsForm {
+  width: 80%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #efecec;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 0 3%;
+}
+
+.createCompanyInputName,
+.createCompanyInputAddress,
+.createCompanyTextareaDescription {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.createCompanyTextareaDescription {
+  resize: none;
+}
+
+.createCompanyDivCity {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createCompanyInputZipCode,
+.createCompanyInputCity {
+  width: 48%;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.createCompanyInputsForm input::placeholder,
+.createCompanyInputsForm textarea::placeholder {
+  color: #000;
+  font-weight: bold;
+}
+
+.createCompanyButton {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5% 0;
+}
+
+.createCompanyButton:hover {
+  box-shadow: 0 0 10px grey;
+}
+
+.createCompanyImgButton {
+  width: 10%;
+  height: auto;
+}
+
+.joinCompanySelectForm {
+  width: 80%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #efecec;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 0 3%;
+}
+
+.joinCompanySelect {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}

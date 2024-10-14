@@ -58,23 +58,23 @@ function ProfilePage() {
           <div className="separateDivProfile"></div>
           <div className="part3Profile">
             {!currentUser?.company_id ? (
-              <button className="companyButtonProfile">
+              <a className="companyLinkProfile" href="/create-company">
                 <img
-                  className="companyButtonImg1Profile"
+                  className="companyLinkImg1Profile"
                   src={createLogo}
                   alt="create logo"
                 />
-                Créer mon compte entreprise
-              </button>
+                Créer ou rejoindre une entreprise
+              </a>
             ) : (
-              <button className="companyButtonProfile">
+              <a className="companyLinkProfile">
                 <img
-                  className="companyButtonImg2Profile"
+                  className="companyLinkImg2Profile"
                   src={showLogo}
                   alt="show logo"
                 />
                 Voir mon entreprise
-              </button>
+              </a>
             )}
           </div>
         </div>
