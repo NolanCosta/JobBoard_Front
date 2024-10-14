@@ -1,23 +1,24 @@
 import React from 'react';
 import Header from '../components/layout/header.jsx';
 import Footer from '../components/layout/footer.jsx';
-import Advertisement from '../components/advertisement.jsx';
+import TableUser from '../components/AdminUser.jsx';
 
 
-function HomePage() {
+
+function AdminUserPage() {
    
 
     return (
         <div>
+
             <Header/> 
-            <Advertisement/>
-            <Footer/> 
+            <TableUser/> 
+            <Footer/>
           
 
-                  
            
         </div>
     );
 }
 
-export default HomePage;
+export default AdminUserPage;

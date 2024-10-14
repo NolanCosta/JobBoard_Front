@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import CompanyPage from "./pages/CompanyPage";
 import ProfilePage from "./pages/ProfilePage";
+import AdminUserPage from "./pages/AdminUserPage";
  
 
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/jobs" element={<JobsPage />} />
             <Route path="/company" element={<CompanyPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/Admin" element={<AdminUserPage />} />
 
            
           </Routes>

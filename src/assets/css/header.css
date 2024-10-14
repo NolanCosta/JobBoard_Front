@@ -52,13 +52,4 @@
     }
   }
 
-.footer{
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    position: absolute;
-    bottom:0;
-    padding-bottom: 1%;
-}
 
