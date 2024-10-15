@@ -121,3 +121,24 @@
   width: 15%;
   height: auto;
 }
+
+.profileActionsButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 5%;
+}
+
+.profileButtonDelete {
+  width: 15%;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+}

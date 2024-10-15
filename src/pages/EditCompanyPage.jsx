@@ -76,18 +76,14 @@ export default function EditCompanyPage() {
         },
         body: formData,
       };
-
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/company/update/${id}`,
-        options
-      );
+      const url = `${process.env.REACT_APP_API_URL}/company/update/${id}`;
+      const response = await fetch(url, options);
 
       const data = await response.json();
 
       if (response.ok) {
         toast.success(data.message);
-        navigate(`/comapny/${id}`);
-        window.location.reload();
+        navigate(`/company/${id}`);
       } else {
         toast.error(data.message);
       }

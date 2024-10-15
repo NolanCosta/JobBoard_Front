@@ -12,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import CompanyPage from "./pages/CompanyPage";
 import ProfilePage from "./pages/ProfilePage";
+import EditProfilePage from "./pages/EditProfilePage";
 import AdminUserPage from "./pages/AdminUserPage";
 import CreateCompanyPage from "./pages/CreateCompanyPage";
 import EditCompanyPage from "./pages/EditCompanyPage";
@@ -66,6 +67,7 @@ function App() {
           <Route path="/jobs" element={<JobsPage />} />
           <Route path="/company/:id" element={<CompanyPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/edit-profile/:id" element={<EditProfilePage />} />
           <Route path="/create-company" element={<CreateCompanyPage />} />
           <Route path="/edit-company/:id" element={<EditCompanyPage />} />
           <Route path="/admin" element={<AdminUserPage />} />
