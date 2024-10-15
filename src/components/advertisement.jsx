@@ -1,9 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
 import "../assets/css/advertisement.css";
 import React, { useState, useEffect } from "react";
 
 const Advertisement = () => {
   const [advertisements, setAdvertisement] = useState([]);
+
+  const truncateText = (text, limit) => {
+    return text.length > limit ? text.substring(0, limit) + "..." : text;
+  };
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -25,30 +28,32 @@ const Advertisement = () => {
     <div className="job-cards-container">
       {advertisements.map((advertisement) => (
         <div key={advertisement.id} className="job-card">
-          <h2>{advertisement.title}</h2>
-          <p>
+          <h2 className="job-card-title">{advertisement.title}</h2>
+          <p className="job-card-address">
             <strong>Lieu:</strong> {advertisement.city}
           </p>
           <div className="block-tags">
-            <div className="tags">
-              <p>
-                <strong></strong> {advertisement.working_time}
+            {advertisement.working_time && (
+              <p className="tags">
+                <strong>{advertisement.working_time}</strong>
               </p>
-            </div>
-            <div className="tags">
-              <p>
-                <strong></strong> {advertisement.wage}
+            )}
+
+            {advertisement.wage && (
+              <p className="tags">
+                <strong>{advertisement.wage}</strong>
               </p>
-            </div>
+            )}
           </div>
           <p>
             <strong>Date de publication:</strong>{" "}
             {new Date(advertisement.created_at).toLocaleDateString()}
           </p>
           <p>
-            <strong>Description:</strong> {advertisement.description}
+            <strong>Description:</strong>{" "}
+            {truncateText(advertisement.description, 150)}
           </p>
-          <button>voir</button>
+          <button>Voir l'annonce</button>
         </div>
       ))}
     </div>
