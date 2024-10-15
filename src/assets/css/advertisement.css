@@ -4,14 +4,14 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 10%;
+  justify-content: space-evenly;
+  gap: 4%;
   flex-wrap: wrap;
   margin-top: 5%;
 }
 
 .job-card {
-  width: 30%;
+  width: 25%;
   margin-bottom: 3%;
   border: 1px solid black;
   border-radius: 25px;

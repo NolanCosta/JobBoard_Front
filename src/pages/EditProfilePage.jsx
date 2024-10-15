@@ -3,7 +3,7 @@ import Header from "../components/layout/header.jsx";
 import { AuthContext } from "../components/context/AuthContext.jsx";
 import { toast } from "react-toastify";
 import Footer from "../components/layout/footer.jsx";
-// import "../assets/css/editProfile.css";
+import "../assets/css/editProfile.css";
 
 function EditProfilePage() {
   const { accessToken, currentUser } = useContext(AuthContext);
@@ -77,35 +77,65 @@ function EditProfilePage() {
   return (
     <div>
       <Header />
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="text"
-          name="lastname"
-          defaultValue={currentUser?.lastname}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="firstname"
-          defaultValue={currentUser?.firstname}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          defaultValue={currentUser?.email}
-          onChange={handleChange}
-        />
-        <input
-          type="tel"
-          name="email"
-          defaultValue={currentUser?.phone}
-          onChange={handleChange}
-        />
-        <input type="password" name="password" onChange={handleChange} />
-        <input type="password" name="confirmPassword" onChange={handleChange} />
-        <button type="submit">Enregistrer</button>
-      </form>
+      <div className="editProfileContainer">
+        <form className="editProfileForm" onSubmit={(e) => handleSubmit(e)}>
+          <div className="editProfileInputsForm">
+            <input
+              className="editProfileInputLastname"
+              type="text"
+              name="lastname"
+              placeholder="Nom..."
+              defaultValue={currentUser?.lastname}
+              onChange={handleChange}
+              required
+            />
+            <input
+              className="editProfileInputFirstname"
+              type="text"
+              name="firstname"
+              placeholder="Prénom..."
+              defaultValue={currentUser?.firstname}
+              onChange={handleChange}
+              required
+            />
+            <input
+              className="editProfileInputEmail"
+              type="email"
+              name="email"
+              placeholder="Email..."
+              defaultValue={currentUser?.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              className="editProfileInputPhone"
+              type="tel"
+              name="phone"
+              placeholder="Téléphone..."
+              defaultValue={currentUser?.phone}
+              onChange={handleChange}
+              required
+            />
+            <input
+              className="editProfileInputPassword"
+              type="password"
+              name="password"
+              placeholder="Mot de passe..."
+              onChange={handleChange}
+            />
+            <input
+              className="editProfileInputConfirmPassword"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirmer mot de passe..."
+              onChange={handleChange}
+            />
+          </div>
+          <button className="editProfileButton" type="submit">
+            Enregistrer
+          </button>
+        </form>
+      </div>
       <Footer />
     </div>
   );
