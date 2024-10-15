@@ -1,33 +1,46 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
-import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
-import { Link, useNavigate, } from "react-router-dom";
-
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { AuthContext } from "./context/AuthContext.jsx";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-quartz.css";
+import TrashLogo from "../assets/image/trash.png";
+import EditLogo from "../assets/image/edit.png";
+// import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "../assets/css/AdminUser.css";
 
 function TableUser() {
+  const { accessToken, currentUser } = useContext(AuthContext);
   const [rowData, setRowData] = useState();
-  const navigate = useNavigate();
-  const [message ,setMessage]= useState();
+  // const navigate = useNavigate();
+  const [message, setMessage] = useState();
 
-  // Fonction pour récupérer les utilisateurs avec fetch
+  // useEffect(() => {
+  //   if (currentUser.role !== "ADMIN") {
+  //     navigate("/home");
+  //   }
+  // }, []);
+
   const getUsers = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/useradmin", {
+      const option = {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
-      });
+      };
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/userAdmin`,
+        option
+      );
 
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des utilisateurs");
       }
 
       const data = await response.json();
-      console.log(data);
-      setRowData(data); // Assurez-vous que la structure des données correspond à celle attendue
+
+      setRowData(data);
     } catch (error) {
       console.error("Erreur:", error);
     }
@@ -48,35 +61,46 @@ function TableUser() {
     };
   }, []);
 
-  const CustomButtonComponent = (props) => {
-    const handleClick = () => {
-      navigate(`/useradmin/${props.data.id}`); // Redirection vers la page de l'entreprise avec l'ID de l'entreprise
+  const ActionsButtonComponent = (props) => {
+    const handleDelete = async () => {
+      try {
+        const option = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/user/delete/${props.data.id}`,
+          option
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          toast.success(data.message);
+          await getUsers();
+        } else {
+          toast.error(data.message);
+        }
+      } catch (error) {
+        setMessage("Error: " + error.message);
+      }
     };
 
-    return <button onClick={handleClick}>Voir</button>;
-  };
+    const handleEdit = () => {};
 
-  const DeleteButtonComponent = (props) => {
-    const handleClick = async () => {
-        try {
-            const response = await fetch(`http://localhost:8000/api/userde/${props.data.id}`, {
-              method: 'DELETE',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
-    
-            if (response.ok) {
-              setMessage('User deleted successfully.');
-            } else {
-              setMessage('Failed to delete user.');
-            }
-        } catch (error) {
-            setMessage('Error: ' + error.message);
-        }
-    };    
-
-    return <button onClick={handleClick}>supprimer</button>;
+    return (
+      <div className="actionsUserAdmin">
+        <button className="editUserAdmin" onClick={handleEdit}>
+          <img src={EditLogo} alt="edit logo" />
+        </button>
+        <button className="deleteUserAdmin" onClick={handleDelete}>
+          <img src={TrashLogo} alt="trash logo" />
+        </button>
+      </div>
+    );
   };
 
   const [colDefs, setColDefs] = useState([
@@ -102,14 +126,13 @@ function TableUser() {
       flex: 3,
     },
 
-    { field: 'Informations', cellRenderer: DeleteButtonComponent, flex: 2 },
+    { field: "Informations", cellRenderer: ActionsButtonComponent, flex: 2 },
   ]);
 
   return (
     <>
-      <div className="nav-admin">
-
-      </div>
+      <div className="nav-admin"></div>
+      <button>Ajouter un utilisateur</button>
       <div className="table">
         <div className="ag-theme-quartz " style={{ height: 150 + 40 * 10 }}>
           <AgGridReact

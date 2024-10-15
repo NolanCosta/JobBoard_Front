@@ -1,21 +1,35 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../components/context/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/layout/header.jsx";
 import Footer from "../components/layout/footer.jsx";
 import "../assets/css/company.css";
+import { toast } from "react-toastify";
 
 function CompanyPage() {
   const { id } = useParams();
   const { accessToken, currentUser } = useContext(AuthContext);
   const [company, setCompany] = useState([]);
+  const navigate = useNavigate();
 
   const getCompany = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/company/${id}`
-    );
-    const data = await response.json();
-    setCompany(data);
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/company/${id}`
+      );
+      const data = await response.json();
+      console.log(response.status);
+
+      if (response.status === 404) {
+        toast.error(data.message);
+        navigate("/home");
+      } else {
+        setCompany(data);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la récupération de la compagnie", error);
+    }
   };
 
   useEffect(() => {

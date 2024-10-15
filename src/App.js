@@ -66,7 +66,7 @@ function App() {
           <Route path="/company/:id" element={<CompanyPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/create-company" element={<CreateCompanyPage />} />
-          <Route path="/Admin" element={<AdminUserPage />} />
+          <Route path="/admin" element={<AdminUserPage />} />
         </Routes>
       </Router>
     </AuthContext.Provider>
