@@ -125,11 +125,11 @@ export default function CreateCompanyPage() {
           {type ? (
             <>
               <div className="createCompanyInputsForm">
-                <input
+                {/* <input
                   className="createCompanyInputLogo"
                   type="file"
                   name="logo"
-                />
+                /> */}
                 <input
                   className="createCompanyInputName"
                   type="text"

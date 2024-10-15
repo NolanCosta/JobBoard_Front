@@ -8,7 +8,9 @@ const Advertisement = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/annonce");
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/annonce`
+        );
         const data = await response.json();
         setAdvertisement(data);
       } catch (error) {

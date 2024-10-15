@@ -19,7 +19,6 @@ function CompanyPage() {
         `${process.env.REACT_APP_API_URL}/company/${id}`
       );
       const data = await response.json();
-      console.log(response.status);
 
       if (response.status === 404) {
         toast.error(data.message);
@@ -50,7 +49,12 @@ function CompanyPage() {
         option
       );
       const data = await response.json();
-      console.log(data);
+
+      if (response.ok) {
+        toast.success(data.message);
+      } else {
+        toast.error(data.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -85,12 +89,20 @@ function CompanyPage() {
             Voir les annonces
           </a>
           {currentUser?.id === company.user_id && (
-            <button
-              className="companyAdvertisementButtonDelete"
-              onClick={handleDelete}
-            >
-              Supprimer mon entreprise
-            </button>
+            <>
+              <a
+                href={`/edit-company/${company.id}`}
+                className="companyAdvertisementButtonEdit"
+              >
+                Modifier mon entreprise
+              </a>
+              <button
+                className="companyAdvertisementButtonDelete"
+                onClick={handleDelete}
+              >
+                Supprimer mon entreprise
+              </button>
+            </>
           )}
         </div>
       </div>

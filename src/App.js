@@ -14,6 +14,7 @@ import CompanyPage from "./pages/CompanyPage";
 import ProfilePage from "./pages/ProfilePage";
 import AdminUserPage from "./pages/AdminUserPage";
 import CreateCompanyPage from "./pages/CreateCompanyPage";
+import EditCompanyPage from "./pages/EditCompanyPage";
 import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
           <Route path="/company/:id" element={<CompanyPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/create-company" element={<CreateCompanyPage />} />
+          <Route path="/edit-company/:id" element={<EditCompanyPage />} />
           <Route path="/admin" element={<AdminUserPage />} />
         </Routes>
       </Router>
