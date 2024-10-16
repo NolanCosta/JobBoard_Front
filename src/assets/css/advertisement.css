@@ -84,7 +84,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   justify-content: space-between;
   background-color: #efecec;
   border: 1px solid black;
@@ -95,6 +95,21 @@
 .advertisementWage p,
 .advertisementContractElements p {
   display: inline-block;
+  background-color: #d9d9d9;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.advertisementSkillsElement,
+.advertisementTagsElement {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.advertisementSkillsElement p,
+.advertisementTagsElement p {
   background-color: #d9d9d9;
   padding: 5px;
   border-radius: 5px;

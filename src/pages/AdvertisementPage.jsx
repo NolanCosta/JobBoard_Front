@@ -61,37 +61,56 @@ function AdvertisementPage() {
         </div>
         <div className="advertisementElement2">
           <h5>Information sur le poste : </h5>
-          <div className="advertisementSector">
-            <h6>Secteur :</h6>
-            <p>{advertisement?.sector}</p>
-          </div>
-          <div className="advertisementTags">
-            <h6>Tags :</h6>
-            {/* {advertisement.tags !== "undifined"
-              ? JSON.parse(advertisement.tags).map((tag) => <p>{tag}</p>)
-              : null} */}
-          </div>
-          <div className="advertisementSkills">
-            <h6>Compétences :</h6>
-            {/* {advertisement.skills !== "undifined"
-            ? JSON.parse(advertisement.skills).map((skill) => <p>{skill}</p>)
-            : null} */}
-          </div>
-          <div className="advertisementWage">
-            <h6>Salaire :</h6>
-            <p>{advertisement.wage}€</p>
-          </div>
-          <div className="advertisementContract">
-            <h6>Type de poste :</h6>
-            <div className="advertisementContractElements">
-              <p>{advertisement.type}</p>
-              <p>{advertisement.working_time}</p>
+          {advertisement.sector && (
+            <div className="advertisementSector">
+              <h6>Secteur :</h6>
+              <p>{advertisement?.sector}</p>
             </div>
-          </div>
-          <div className="advertisementDescription">
-            <h6>description :</h6>
-            <p>{advertisement.description}</p>
-          </div>
+          )}
+          {advertisement.tags && (
+            <div className="advertisementTags">
+              <h6>Tags :</h6>
+              <div className="advertisementTagsElement">
+                {JSON.parse(advertisement.tags).map((tag) => (
+                  <p>{tag}</p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {advertisement.skills && (
+            <div className="advertisementSkills">
+              <h6>Compétences :</h6>
+              <div className="advertisementSkillsElement">
+                {JSON.parse(advertisement.skills).map((skill) => (
+                  <p>{skill}</p>
+                ))}
+              </div>
+            </div>
+          )}
+          {advertisement.wage && (
+            <div className="advertisementWage">
+              <h6>Salaire :</h6>
+              <p>{advertisement.wage} €</p>
+            </div>
+          )}
+          {(advertisement.type || advertisement.working_time) && (
+            <div className="advertisementContract">
+              <h6>Type de poste :</h6>
+              <div className="advertisementContractElements">
+                {advertisement.type && <p>{advertisement.type}</p>}
+                {advertisement.working_time && (
+                  <p>{advertisement.working_time}</p>
+                )}
+              </div>
+            </div>
+          )}
+          {advertisement.description && (
+            <div className="advertisementDescription">
+              <h6>description :</h6>
+              <p>{advertisement.description}</p>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
