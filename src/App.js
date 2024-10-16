@@ -16,6 +16,8 @@ import EditProfilePage from "./pages/EditProfilePage";
 import AdminUserPage from "./pages/AdminUserPage";
 import CreateCompanyPage from "./pages/CreateCompanyPage";
 import EditCompanyPage from "./pages/EditCompanyPage";
+import AdvertisementPage from "./pages/AdvertisementPage";
+import ApplyAdvertisementPage from "./pages/ApplyAdvertisementPage";
 import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
@@ -71,6 +73,11 @@ function App() {
           <Route path="/create-company" element={<CreateCompanyPage />} />
           <Route path="/edit-company/:id" element={<EditCompanyPage />} />
           <Route path="/admin" element={<AdminUserPage />} />
+          <Route path="/advertisement/:id" element={<AdvertisementPage />} />
+          <Route
+            path="/apply-advertisement/:id"
+            element={<ApplyAdvertisementPage />}
+          />
         </Routes>
       </Router>
     </AuthContext.Provider>

@@ -29,3 +29,77 @@
   padding: 1%;
   border-radius: 10px;
 }
+
+.advertisementContainer {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  padding: 2%;
+}
+
+.advertisementElement1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.advertisementElement1Part1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.advertisementButtonApply {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 10%;
+  padding: 5px 0;
+}
+
+.advertisementButtonApply:hover {
+  box-shadow: 0 0 10px grey;
+}
+
+.advertisementButtonApply img {
+  width: 10%;
+  height: auto;
+}
+
+.advertisementElement2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  background-color: #efecec;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2%;
+}
+.advertisementSector p,
+.advertisementWage p,
+.advertisementContractElements p {
+  display: inline-block;
+  background-color: #d9d9d9;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.advertisementContractElements p {
+  margin-right: 10px;
+}

@@ -12,7 +12,7 @@ const Advertisement = () => {
     const fetchJobs = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/annonce`
+          `${process.env.REACT_APP_API_URL}/advertisement`
         );
         const data = await response.json();
         setAdvertisement(data);
@@ -53,7 +53,7 @@ const Advertisement = () => {
             <strong>Description:</strong>{" "}
             {truncateText(advertisement.description, 150)}
           </p>
-          <button>Voir l'annonce</button>
+          <a href={`/advertisement/${advertisement.id}`}>Voir l'annonce</a>
         </div>
       ))}
     </div>
