@@ -62,9 +62,9 @@ export default function CreateCompanyPage() {
     if (type) {
       formData.append("name", name);
       formData.append("address", address);
-      formData.append("zipCode", zipCode);
+      formData.append("zip_code", zipCode);
       formData.append("city", city);
-      formData.append("description", description);
+      formData.append("aboutUs", description);
     } else {
       formData.append("company_id", company_id);
     }
