@@ -79,7 +79,7 @@ function TableJobs() {
         body: formData,
       };
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/annonce`,
+        `${process.env.REACT_APP_API_URL}/advertisement`,
         options
       );
 
@@ -114,7 +114,7 @@ function TableJobs() {
         },
       };
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/annonce`,
+        `${process.env.REACT_APP_API_URL}/advertisement`,
         option
       );
 
@@ -157,7 +157,7 @@ function TableJobs() {
           },
         };
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/annonce/delete/${props.data.id}`,
+          `${process.env.REACT_APP_API_URL}/advertisement/delete/${props.data.id}`,
           option
         );
 
@@ -208,7 +208,7 @@ function TableJobs() {
   //       const handleUpdateSubmit = async (e) => {
   //         e.preventDefault();
   //         try {
-  //           const response = await fetch(`${process.env.REACT_APP_API_URL}/user/${editingUser}`, {
+  //           const response = await fetch(`${process.env.REACT_APP_API_URL}/advertisement/${editingUser}`, {
   //             method: 'PUT',
   //             headers: {
   //               'Content-Type': 'application/json',
