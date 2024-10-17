@@ -1,7 +1,7 @@
 /* Component  header navbar :  */
 
 .navbar {
-  width: 100vw;
+  width: 99vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

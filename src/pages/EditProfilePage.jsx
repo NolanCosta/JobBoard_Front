@@ -11,8 +11,22 @@ function EditProfilePage() {
   const [firstname, setFirstname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [formValues, setFormValues] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    zip_code: "",
+    city: "",
+    password: "",
+  });
 
   useEffect(() => {
     if (!currentUser) {
@@ -25,20 +39,10 @@ function EditProfilePage() {
   }, [currentUser]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "lastname") {
-      setLastname(value);
-    } else if (name === "firstname") {
-      setFirstname(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "phone") {
-      setPhone(value);
-    } else if (name === "password") {
-      setPassword(value);
-    } else if (name === "confirmPassword") {
-      setConfirmPassword(value);
-    }
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -48,15 +52,17 @@ function EditProfilePage() {
     formData.append("firstname", firstname);
     formData.append("email", email);
     formData.append("phone", phone);
+    formData.append("address", address);
+    formData.append("zip_code", zipCode);
+    formData.append("city", city);
     try {
-      console.log(firstname, lastname, email, phone);
-
       const options = {
         method: "PUT",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: formData,
+        body: JSON.stringify(formValues),
       };
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/user/update/${currentUser?.id}`,
@@ -115,6 +121,30 @@ function EditProfilePage() {
               defaultValue={currentUser?.phone}
               onChange={handleChange}
               required
+            />
+            <input
+              className="editProfileInputAddress"
+              type="text"
+              name="address"
+              placeholder="Adresse..."
+              defaultValue={currentUser?.address}
+              onChange={handleChange}
+            />
+            <input
+              className="editProfileInputZipCode"
+              type="number"
+              name="zip_code"
+              placeholder="Code postal..."
+              defaultValue={currentUser?.zip_code}
+              onChange={handleChange}
+            />
+            <input
+              className="editProfileInputCity"
+              type="text"
+              name="city"
+              placeholder="Ville..."
+              defaultValue={currentUser?.city}
+              onChange={handleChange}
             />
             <input
               className="editProfileInputPassword"

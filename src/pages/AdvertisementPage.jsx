@@ -11,6 +11,7 @@ function AdvertisementPage() {
   const { id } = useParams();
   const [advertisement, setAdvertisement] = useState([]);
   const navigate = useNavigate();
+  const [learnMore, setLearnMore] = useState(false);
 
   const getAdvertisement = async () => {
     try {
@@ -67,33 +68,6 @@ function AdvertisementPage() {
               <p>{advertisement?.sector}</p>
             </div>
           )}
-          {advertisement.tags && (
-            <div className="advertisementTags">
-              <h6>Tags :</h6>
-              <div className="advertisementTagsElement">
-                {JSON.parse(advertisement.tags).map((tag) => (
-                  <p>{tag}</p>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {advertisement.skills && (
-            <div className="advertisementSkills">
-              <h6>Compétences :</h6>
-              <div className="advertisementSkillsElement">
-                {JSON.parse(advertisement.skills).map((skill) => (
-                  <p>{skill}</p>
-                ))}
-              </div>
-            </div>
-          )}
-          {advertisement.wage && (
-            <div className="advertisementWage">
-              <h6>Salaire :</h6>
-              <p>{advertisement.wage} €</p>
-            </div>
-          )}
           {(advertisement.type || advertisement.working_time) && (
             <div className="advertisementContract">
               <h6>Type de poste :</h6>
@@ -105,11 +79,56 @@ function AdvertisementPage() {
               </div>
             </div>
           )}
-          {advertisement.description && (
-            <div className="advertisementDescription">
-              <h6>description :</h6>
-              <p>{advertisement.description}</p>
+          {advertisement.wage && (
+            <div className="advertisementWage">
+              <h6>Salaire :</h6>
+              <p>{advertisement.wage} €</p>
             </div>
+          )}
+          {learnMore && (
+            <>
+              {advertisement.tags && (
+                <div className="advertisementTags">
+                  <h6>Tags :</h6>
+                  <div className="advertisementTagsElement">
+                    {JSON.parse(advertisement.tags).map((tag) => (
+                      <p>{tag}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {advertisement.skills && (
+                <div className="advertisementSkills">
+                  <h6>Compétences :</h6>
+                  <div className="advertisementSkillsElement">
+                    {JSON.parse(advertisement.skills).map((skill) => (
+                      <p>{skill}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {advertisement.description && (
+                <div className="advertisementDescription">
+                  <h6>description :</h6>
+                  <p>{advertisement.description}</p>
+                </div>
+              )}
+            </>
+          )}
+          {!learnMore ? (
+            <button
+              className="buttonLearnMore"
+              onClick={() => setLearnMore(true)}
+            >
+              Voir plus
+            </button>
+          ) : (
+            <button
+              className="buttonLearnMore"
+              onClick={() => setLearnMore(false)}
+            >
+              Voir moins
+            </button>
           )}
         </div>
       </div>

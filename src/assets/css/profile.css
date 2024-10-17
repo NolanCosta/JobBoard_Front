@@ -142,3 +142,8 @@
   border: 2px solid red;
   color: red;
 }
+
+.companyLinkProfile:hover {
+  box-shadow: 0 0 10px grey;
+  border: 2px solid #fff;
+}

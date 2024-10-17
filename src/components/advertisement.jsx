@@ -1,5 +1,5 @@
-import "../assets/css/advertisement.css";
 import React, { useState, useEffect } from "react";
+import "../assets/css/advertisement.css";
 
 const Advertisement = () => {
   const [advertisements, setAdvertisement] = useState([]);
