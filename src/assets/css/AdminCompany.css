@@ -4,143 +4,128 @@
     width: 90vw;
     margin-left: 5vw;
     margin-right: 5vw;
-}
-
-.table {
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.nav-admin {
-  background-color: beige;
-  height: 50px;
-  width: 100%;
-}
-
-.actionsUserAdmin {
-  display: flex;
-  justify-content: space-around;
-}
-
-.deleteUserAdmin,
-.editUserAdmin {
-  background-color: transparent;
-  border: none;
-}
-
-.deleteUserAdmin img,
-.editUserAdmin img {
-  width: 20%;
-  height: auto;
-}
-
-
-/* add users  */
-
-.logousers{
-    width: 4%;
-    height: 4%;
-    border-radius: 10%;
+  }
+  
+  .table {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .nav-admin {
+    background-color: beige;
+    height: 50px;
+    width: 100%;
+  }
+  
+  .actionsUserAdmin {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .deleteUserAdmin,
+  .editUserAdmin {
     background-color: transparent;
     border: none;
-}
+  }
+  
+  .deleteUserAdmin img,
+  .editUserAdmin img {
+    width: 35%;
+    height: auto;
+  }
+  
+  
+  /* add users  */
+  
+  .logousers{
+      width: 4%;
+      height: 4%;
+      border-radius: 10%;
+      background-color: transparent;
+      border: none;
+  }
+  
+  .logoa{
+      width: 80%;
+      
+  }
+  
+  .addcompany{
+      display: flex;
+      margin-left: 4%;
+     
+  }
 
-.logoa{
-    width: 80%;
-    
-}
-
-.adduser{
-    display: flex;
-    margin-left: 4%;
-   
-}
-
-
-.form {
-    max-width: 100%;
+/* Style de base pour le formulaire */
+.company-form {
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
   }
   
-
-  .user-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .form-input,
+  .form-textarea {
     width: 100%;
-  }
-
-  .form-input {
-    flex: 1;
-    margin-right: 15px;
     padding: 12px;
     font-size: 16px;
+    margin-bottom: 15px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
-    min-width: 150px; 
   }
   
-
-  .user-form input:last-child {
-    margin-right: 0;
-  }
-  
-
-  .form-input:focus {
+  .form-input:focus,
+  .form-textarea:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
   
- 
   .form-button {
-    margin-top: 20px;
     padding: 12px;
-    background-color: #5d9159;
+    background-color: #007bff;
     color: white;
     font-size: 18px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 25%; 
-    display: flex;
-    justify-content: center;
+    width: 100%; 
   }
   
   .form-button:hover {
-    background-color: #60a773;
+    background-color: #0056b3;
   }
-
-
-  /* css update  */
   
-  .admin-user-table-container {
+  .form-textarea {
+    resize: vertical; 
+  }
+  
+  /* css update company */
+
+  .admin-company-table-container {
     padding: 20px;
   }
   
-  .admin-user-table {
+  .admin-company-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   
-  .admin-user-table th, .admin-user-table td {
+  .admin-company-table th, .admin-company-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
   
-  .admin-user-table th {
+  .admin-company-table th {
     background-color: #f4f4f4;
     font-weight: bold;
   }
@@ -181,4 +166,3 @@
   .edit-form button:hover {
     background-color: #45a049;
   }
-  
