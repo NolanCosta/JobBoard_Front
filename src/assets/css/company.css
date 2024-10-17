@@ -97,14 +97,23 @@
   font-weight: bold;
 }
 
-.companyAdvertisementButtonDelete {
+.companyAdvertisementButtonDelete,
+.companyAdvertisementButtonEdit {
   width: 20%;
   text-align: center;
-  border: 2px solid red;
-  color: red;
   text-decoration: none;
   border-radius: 50px;
   padding: 10px;
   font-weight: bold;
   background-color: white;
+}
+
+.companyAdvertisementButtonEdit {
+  border: 2px solid orange;
+  color: orange;
+}
+
+.companyAdvertisementButtonDelete {
+  border: 2px solid red;
+  color: red;
 }

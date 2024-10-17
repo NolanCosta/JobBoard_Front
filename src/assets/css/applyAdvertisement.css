@@ -1,0 +1,82 @@
+.applyAdvertisementContainer {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  padding: 2%;
+}
+
+.applyAdvertisementForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.applyAdvertisementInputs {
+  width: 65%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #efecec;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0 3%;
+}
+
+.applyAdvertisementElement1,
+.applyAdvertisementElement2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.applyAdvertisementElement1 input,
+.applyAdvertisementElement2 input,
+.applyAdvertisementTextarea {
+  width: 49%;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.applyAdvertisementTextarea {
+  width: 100%;
+  resize: none;
+}
+
+.applyAdvertisementElement1 input::placeholder,
+.applyAdvertisementElement2 input::placeholder,
+.applyAdvertisementTextarea::placeholder {
+  color: #000;
+  font-weight: bold;
+}
+
+.applyAdvertisementButton {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5% 0;
+}
+
+.applyAdvertisementButton:hover {
+  box-shadow: 0 0 10px grey;
+}
+
+.applyAdvertisementButton img {
+  width: 5%;
+  height: auto;
+}

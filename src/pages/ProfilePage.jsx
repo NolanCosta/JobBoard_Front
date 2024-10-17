@@ -10,10 +10,40 @@ import emailLogo from "../assets/image/email.png";
 import rightArrowLogo from "../assets/image/rightArrow.png";
 import showLogo from "../assets/image/show.png";
 import createLogo from "../assets/image/create.png";
+import { toast } from "react-toastify";
 import "../assets/css/profile.css";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
-  const { currentUser } = useContext(AuthContext);
+  const { accessToken, currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    try {
+      const option = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/delete/${currentUser.id}`,
+        option
+      );
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success(data.message);
+        localStorage.removeItem("currentToken");
+        navigate("/home");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -51,9 +81,12 @@ function ProfilePage() {
                 </p>
               </div>
             </div>
-            <button className="buttonProfile">
+            <a
+              href={`/edit-profile/${currentUser?.id}`}
+              className="buttonProfile"
+            >
               <img src={rightArrowLogo} alt="rightArrow logo" />
-            </button>
+            </a>
           </div>
           <div className="separateDivProfile"></div>
           <div className="part3Profile">
@@ -81,7 +114,12 @@ function ProfilePage() {
             )}
           </div>
         </div>
-        <Logout />
+        <div className="profileActionsButtons">
+          <Logout />
+          <button className="profileButtonDelete" onClick={handleDelete}>
+            Supprimer mon compte
+          </button>
+        </div>
       </div>
       <Footer />
     </div>
