@@ -11,12 +11,15 @@ import "../assets/css/editCompany.css";
 export default function EditCompanyPage() {
   const { accessToken } = useContext(AuthContext);
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [city, setCity] = useState("");
-  const [description, setDescription] = useState("");
   const navigate = useNavigate();
+
+  const [formValues, setFormValues] = useState({
+    name: "",
+    address: "",
+    zip_code: "",
+    city: "",
+    aboutUs: "",
+  });
 
   const getCompany = async () => {
     try {
@@ -29,11 +32,13 @@ export default function EditCompanyPage() {
         toast.error(data.message);
         navigate("/profile");
       } else {
-        setName(data.name);
-        setAddress(data.address);
-        setZipCode(data.zip_code);
-        setCity(data.city);
-        setDescription(data.aboutUs);
+        setFormValues({
+          name: data.name,
+          address: data.address,
+          zip_code: data.zip_code,
+          city: data.city,
+          aboutUs: data.aboutUs,
+        });
       }
     } catch (error) {
       console.error("Erreur lors de la récupération de la compagnie", error);
@@ -45,39 +50,35 @@ export default function EditCompanyPage() {
   }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "name") {
-      setName(value.toUpperCase());
-    } else if (name === "address") {
-      setAddress(value);
-    } else if (name === "zipCode") {
-      setZipCode(value);
-    } else if (name === "city") {
-      setCity(value.toUpperCase());
-    } else if (name === "description") {
-      setDescription(value);
+    if (e.target.name === "name" || e.target.name === "city") {
+      setFormValues({
+        ...formValues,
+        [e.target.name]: e.target.value.toUpperCase(),
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        [e.target.name]: e.target.value,
+      });
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("address", address);
-    formData.append("zipCode", zipCode);
-    formData.append("city", city);
-    formData.append("description", description);
     try {
       const options = {
         method: "PUT",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: formData,
+        body: JSON.stringify(formValues),
       };
-      const url = `${process.env.REACT_APP_API_URL}/company/update/${id}`;
-      const response = await fetch(url, options);
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/company/update/${id}`,
+        options
+      );
 
       const data = await response.json();
 
@@ -106,7 +107,7 @@ export default function EditCompanyPage() {
               type="text"
               name="name"
               placeholder="Nom..."
-              defaultValue={name}
+              defaultValue={formValues.name}
               onChange={handleChange}
               required
             />
@@ -115,7 +116,7 @@ export default function EditCompanyPage() {
               type="text"
               name="address"
               placeholder="Adresse..."
-              defaultValue={address}
+              defaultValue={formValues.address}
               onChange={handleChange}
               required
             />
@@ -126,7 +127,7 @@ export default function EditCompanyPage() {
                 name="zipCode"
                 minLength="5"
                 placeholder="Code postal..."
-                defaultValue={zipCode}
+                defaultValue={formValues.zip_code}
                 onChange={handleChange}
                 required
               />
@@ -135,17 +136,17 @@ export default function EditCompanyPage() {
                 type="text"
                 name="city"
                 placeholder="Ville..."
-                defaultValue={city}
+                defaultValue={formValues.city}
                 onChange={handleChange}
                 required
               />
             </div>
             <textarea
               className="editCompanyTextareaDescription"
-              name="description"
-              id="description"
+              name="aboutUs"
+              id="aboutUs"
               placeholder="A propos de l'entreprise..."
-              defaultValue={description}
+              defaultValue={formValues.aboutUs}
               onChange={handleChange}
               required
             ></textarea>

@@ -4,18 +4,13 @@ import { AuthContext } from "../components/context/AuthContext.jsx";
 import { toast } from "react-toastify";
 import Footer from "../components/layout/footer.jsx";
 import "../assets/css/editProfile.css";
+import { useNavigate } from "react-router-dom";
 
 function EditProfilePage() {
   const { accessToken, currentUser } = useContext(AuthContext);
-  const [lastname, setLastname] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
     firstname: "",
@@ -29,16 +24,25 @@ function EditProfilePage() {
   });
 
   useEffect(() => {
-    if (!currentUser) {
-      return;
-    }
-    setLastname(currentUser.lastname);
-    setFirstname(currentUser.firstname);
-    setEmail(currentUser.email);
-    setPhone(currentUser.phone);
+    setFormValues({
+      firstname: currentUser?.firstname || "",
+      lastname: currentUser?.lastname || "",
+      email: currentUser?.email || "",
+      phone: currentUser?.phone || "",
+      address: currentUser?.address || "",
+      zip_code: currentUser?.zip_code || "",
+      city: currentUser?.city || "",
+      password: "",
+    });
   }, [currentUser]);
 
   const handleChange = (e) => {
+    if (e.target.name === "password") {
+      setPassword(e.target.value);
+    }
+    if (e.target.name === "confirmPassword") {
+      setConfirmPassword(e.target.value);
+    }
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value,
@@ -47,14 +51,12 @@ function EditProfilePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("lastname", lastname);
-    formData.append("firstname", firstname);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("address", address);
-    formData.append("zip_code", zipCode);
-    formData.append("city", city);
+    if (password !== confirmPassword) {
+      toast.error("Les mots de passe ne correspondent pas");
+      return;
+    }
+    console.log(formValues);
+
     try {
       const options = {
         method: "PUT",
@@ -72,6 +74,7 @@ function EditProfilePage() {
 
       if (response.ok) {
         toast.success(data.message);
+        navigate("/profile");
       } else {
         toast.error(data.message);
       }

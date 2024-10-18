@@ -12,10 +12,12 @@
 
 .job-card {
   width: 25%;
+  display: inline-block;
   margin-bottom: 3%;
   border: 1px solid black;
   border-radius: 25px;
   padding: 1%;
+  background-color: #fff;
 }
 
 .block-tags {
@@ -71,7 +73,6 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
-  margin-right: 10%;
   padding: 5px 0;
 }
 
