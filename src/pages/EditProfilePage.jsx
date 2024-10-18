@@ -4,59 +4,67 @@ import { AuthContext } from "../components/context/AuthContext.jsx";
 import { toast } from "react-toastify";
 import Footer from "../components/layout/footer.jsx";
 import "../assets/css/editProfile.css";
+import { useNavigate } from "react-router-dom";
 
 function EditProfilePage() {
   const { accessToken, currentUser } = useContext(AuthContext);
-  const [lastname, setLastname] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const [formValues, setFormValues] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    zip_code: "",
+    city: "",
+    password: "",
+  });
 
   useEffect(() => {
-    if (!currentUser) {
-      return;
-    }
-    setLastname(currentUser.lastname);
-    setFirstname(currentUser.firstname);
-    setEmail(currentUser.email);
-    setPhone(currentUser.phone);
+    setFormValues({
+      firstname: currentUser?.firstname || "",
+      lastname: currentUser?.lastname || "",
+      email: currentUser?.email || "",
+      phone: currentUser?.phone || "",
+      address: currentUser?.address || "",
+      zip_code: currentUser?.zip_code || "",
+      city: currentUser?.city || "",
+      password: "",
+    });
   }, [currentUser]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "lastname") {
-      setLastname(value);
-    } else if (name === "firstname") {
-      setFirstname(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "phone") {
-      setPhone(value);
-    } else if (name === "password") {
-      setPassword(value);
-    } else if (name === "confirmPassword") {
-      setConfirmPassword(value);
+    if (e.target.name === "password") {
+      setPassword(e.target.value);
     }
+    if (e.target.name === "confirmPassword") {
+      setConfirmPassword(e.target.value);
+    }
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("lastname", lastname);
-    formData.append("firstname", firstname);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    try {
-      console.log(firstname, lastname, email, phone);
+    if (password !== confirmPassword) {
+      toast.error("Les mots de passe ne correspondent pas");
+      return;
+    }
+    console.log(formValues);
 
+    try {
       const options = {
         method: "PUT",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: formData,
+        body: JSON.stringify(formValues),
       };
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/user/update/${currentUser?.id}`,
@@ -66,6 +74,7 @@ function EditProfilePage() {
 
       if (response.ok) {
         toast.success(data.message);
+        navigate("/profile");
       } else {
         toast.error(data.message);
       }
@@ -115,6 +124,30 @@ function EditProfilePage() {
               defaultValue={currentUser?.phone}
               onChange={handleChange}
               required
+            />
+            <input
+              className="editProfileInputAddress"
+              type="text"
+              name="address"
+              placeholder="Adresse..."
+              defaultValue={currentUser?.address}
+              onChange={handleChange}
+            />
+            <input
+              className="editProfileInputZipCode"
+              type="number"
+              name="zip_code"
+              placeholder="Code postal..."
+              defaultValue={currentUser?.zip_code}
+              onChange={handleChange}
+            />
+            <input
+              className="editProfileInputCity"
+              type="text"
+              name="city"
+              placeholder="Ville..."
+              defaultValue={currentUser?.city}
+              onChange={handleChange}
             />
             <input
               className="editProfileInputPassword"

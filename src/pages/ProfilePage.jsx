@@ -76,8 +76,9 @@ function ProfilePage() {
               <div className="contactElementProfile">
                 <img src={pingLogo} alt="ping logo" />
                 <p className="addressProfile">
-                  {currentUser?.zip_code},&nbsp;
-                  {currentUser?.address}
+                  {currentUser?.address}&nbsp;
+                  {currentUser?.zip_code}&nbsp;
+                  {currentUser?.city}
                 </p>
               </div>
             </div>

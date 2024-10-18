@@ -5,6 +5,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: #efecec;
 }
 
 .editCompanyForm {
@@ -18,23 +19,23 @@
 }
 
 .editCompanyInputsForm {
-  width: 80%;
+  width: 50%;
   height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #efecec;
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 0 3%;
+  background-color: #fff;
+  box-shadow: 0 0 10px grey;
+  border-radius: 8px;
+  padding: 3%;
 }
 
 .editCompanyInputName,
 .editCompanyInputAddress,
 .editCompanyTextareaDescription {
-  width: 100%;
+  width: 95%;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 10px;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .editCompanyDivCity {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -54,7 +55,7 @@
 .editCompanyInputCity {
   width: 48%;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 10px;
 }
 
@@ -65,7 +66,7 @@
 }
 
 .editCompanyButton {
-  width: 30%;
+  width: 43%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,14 +76,15 @@
   color: #000;
   font-weight: bold;
   cursor: pointer;
-  padding: 0.5% 0;
+  padding: 0.5%;
 }
 
 .editCompanyButton:hover {
   box-shadow: 0 0 10px grey;
+  border: 2px solid #fff;
 }
 
 .editCompanyImgButton {
-  width: 10%;
+  width: 6%;
   height: auto;
 }
