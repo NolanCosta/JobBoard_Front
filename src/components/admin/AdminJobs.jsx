@@ -26,19 +26,18 @@ function TableJobs() {
   // const navigate = useNavigate();
   const [message, setMessage] = useState();
 
-  // const [editingUser, setEditingUser] = useState(null);
-  // const [users, setUsers] = useState([]);
+  const [editingAdvertisement, setEditingAdvertisement] = useState(null);
+  const [users, setUsers] = useState([]);
 
-  // const [formValues, setFormValues] = useState({
-  //   firstname: '',
-  //   lastname: '',
-  //   email: '',
-  //   phone: '',
-  //   address: '',
-  //   zip_code: '',
-  //   city: '',
-  //   role: ''
-  // });
+  const [formValues, setFormValues] = useState({
+    
+    title: "",
+    type: "",
+    sector: "",
+    wage: "",
+    workingtime: "",
+    skills: "",
+  });
 
   // useEffect(() => {
   //   if (currentUser.role !== "ADMIN") {
@@ -46,7 +45,7 @@ function TableJobs() {
   //   }
   // }, []);
 
-  // button pour ajouter des utilisateurs
+  // button pour ajouter des annonces
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -174,17 +173,19 @@ function TableJobs() {
       }
     };
 
-    // const handleEdit = (advertisement) => {
-    //   console.log(advertisement);
+    const handleEdit = (advertisement) => {
+      console.log(advertisement);
 
-    //   setEditingUser((data) => (data === advertisement.id ? null : advertisement.id));
+      setEditingAdvertisement((data) =>
+        data === advertisement.id ? null : advertisement.id
+      );
 
-    //   setFormValues({ ...advertisement }); // Préremplit les champs du formulaire avec les valeurs actuelles de l'utilisateur
-    // };
+      setFormValues({ ...advertisement }); // Préremplit les champs du formulaire avec les valeurs actuelles de l'annonce
+    };
 
     return (
       <div className="actionsUserAdmin">
-        <button className="editUserAdmin">
+        <button className="editUserAdmin" onClick={() => handleEdit(props.data)}> 
           <img src={EditLogo} alt="edit logo" />
         </button>
         <button className="deleteUserAdmin" onClick={handleDelete}>
@@ -194,38 +195,41 @@ function TableJobs() {
     );
   };
 
-  //  // UPDATE UN UTILISATEUR
+  // UPDATE UN annonce
 
-  //       // Fonction pour capturer les changements dans le formulaire
-  //       const handleChangeForm = (e) => {
-  //         setFormValues({
-  //           ...formValues,
-  //           [e.target.name]: e.target.value,
-  //         });
-  //       };
+  // Fonction pour capturer les changements dans le formulaire
+  const handleChangeForm = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  //       // Soumettre la mise à jour de l'utilisateur avec fetch
-  //       const handleUpdateSubmit = async (e) => {
-  //         e.preventDefault();
-  //         try {
-  //           const response = await fetch(`${process.env.REACT_APP_API_URL}/advertisement/${editingUser}`, {
-  //             method: 'PUT',
-  //             headers: {
-  //               'Content-Type': 'application/json',
-  //             },
-  //             body: JSON.stringify(formValues), // Envoyer les données sous forme de JSON
-  //           });
+  // Soumettre la mise à jour de l'annonce avec fetch
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/advertisement/${editingAdvertisement}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formValues), // Envoyer les données sous forme de JSON
+        }
+      );
 
-  //           const result = await response.json(); // Traite la réponse
-  //           console.log('Utilisateur mis à jour:', result);
+      const result = await response.json(); // Traite la réponse
+      console.log("annonce mis à jour:", result);
 
-  //           // Après mise à jour, réinitialise l'utilisateur en cours de modification
-  //           setEditingUser(null);
-  //           getJobs(); // Recharge la liste des utilisateurs pour montrer les modifications
-  //         } catch (error) {
-  //           console.error('Erreur lors de la mise à jour de l\'utilisateur:', error);
-  //         }
-  //       };
+      // Après mise à jour, réinitialise l'annonce en cours de modification
+      setEditingAdvertisement(null);
+      getJobs(); // Recharge la liste des annonces pour montrer les modifications
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de l'annonce:", error);
+    }
+  };
 
   const colDefs = useMemo(
     () => [
@@ -241,6 +245,73 @@ function TableJobs() {
 
   return (
     <>
+      <div className="admin-user-table-container">
+        {editingAdvertisement && (
+          <div className="edit-form">
+            <h2>Modifier l'annonce</h2>
+            <form onSubmit={handleUpdateSubmit}>
+              <div className="form-row">
+                <label>Titre:</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={formValues.title}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <label>Type:</label>
+                <input
+                  type="text"
+                  name="type"
+                  value={formValues.type}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <label>Secteur:</label>
+                <input
+                  type="text"
+                  name="sector"
+                  value={formValues.sector}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <label>salaire:</label>
+                <input
+                  type="interger"
+                  name="wage"
+                  value={formValues.wage}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <label>temps de travail:</label>
+                <input
+                  type="text"
+                  name="workingtime"
+                  value={formValues.workingtime}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
+
+
+              <button type="submit">Mettre à jour</button>
+            </form>
+          </div>
+        )}
+      </div>
+
       <div className="adduser">
         <button
           className="logousers"
@@ -315,7 +386,7 @@ function TableJobs() {
         <div className="ag-theme-quartz " style={{ height: 150 + 40 * 10 }}>
           <AgGridReact
             columnDefs={colDefs} // Définition des colonnes
-            rowData={rowData} // Les données des utilisateurs
+            rowData={rowData} // Les données des annonces
             pagination={true} // Activer la pagination
             paginationPageSizeSelector={[10, 25, 50]}
             paginationPageSize={10} // Nombre d'éléments par page
