@@ -10,8 +10,6 @@ Pour installer les dépendances du projet, exécutez la commande suivante :
 npm install
 ```
 
-Ce guide vous explique comment installer et configurer un projet **React** à partir de zéro. Suivez ces étapes pour démarrer rapidement avec React dans votre environnement de développement **VS Code**.
-
 ## Prérequis
 
 Avant de commencer, assurez-vous que vous avez les éléments suivants installés sur votre machine :
@@ -28,7 +26,6 @@ npm -v
 ```
 
 Dans le terminal, exécutez la commande suivante pour démarrer le serveur de développement :
-
 
 ```bash
 
@@ -82,11 +79,11 @@ src/
         ...
     setupTests.js
 ```
+
 Détails des fichiers importants
 src/App.js : Le composant principal de votre application React.
 public/index.html : Le fichier HTML dans lequel votre application sera rendue.
 package.json : Le fichier de configuration contenant les dépendances et les scripts de votre projet.
-
 
 Pour ajouter des bibliothèques tierces, utilisez npm. Par exemple, pour installer React Router, exécutez :
 
@@ -112,42 +109,43 @@ Pour créer un nouveau composant, suivez ces étapes :
 
 1. Dans le dossier `src`, créez un nouveau fichier pour votre composant, par exemple `advertisement.js`.
 
-
 advertisement.jsx : Ce composant affiche plusieurs card. Il est utilisé pour montrer les annonces d'emploi aux utilisateurs.
 
 2. Dans ce fichier, écrivez le code suivant :
 
    ```javascript
-   import React from 'react';
+   import React from "react";
 
    function Advertisement() {
-       return (
-           <div>
-               <h1>Annonce!</h1>
-           </div>
-       );
+     return (
+       <div>
+         <h1>Annonce!</h1>
+       </div>
+     );
    }
 
    export default Advertisement;
+   ```
 
-```javascript 
+```javascript
 
-`admin` : Ce dossier contient les composants liés à l'administration, tels que la gestion des utilisateurs et des annonces. 
+`admin` : Ce dossier contient les composants liés à l'administration, tels que la gestion des utilisateurs et des annonces.
 
 `context`: Ce dossier contient les contextes React utilisés pour gérer l'état global de l'application.
 
-`custom` : Ce dossier contient des composants personnalisés réutilisables dans l'application. 
+`custom` : Ce dossier contient des composants personnalisés réutilisables dans l'application.
 
 `layout` : Ce dossier contient les composants de mise en page, comme les en-têtes, les pieds de page, et les barres de navigation.
 
-`loader` : Ce dossier contient les composants de chargement, utilisés pour indiquer à l'utilisateur que des données sont en cours de chargement. 
+`loader` : Ce dossier contient les composants de chargement, utilisés pour indiquer à l'utilisateur que des données sont en cours de chargement.
 
 ```
-#### Admin 
+
+#### Admin
 
 `AdminUser.jsx`
 
-``` 
+```
 Ce composant permet de gérer les utilisateurs. Il offre des fonctionnalités pour ajouter, supprimer et modifier les utilisateurs.
 
 Ce composant permet de gérer les utilisateurs. Il offre des fonctionnalités pour ajouter, supprimer et modifier les utilisateurs. Voici les principales fonctionnalités :
@@ -166,7 +164,7 @@ Suppression d'un utilisateur :
 Le composant permet de supprimer un utilisateur en envoyant une requête DELETE à l'API.
 ```
 
- - Détails des fonctionnalitées : 
+- Détails des fonctionnalitées :
 
 1 - Affichage de la liste des utilisateurs :
 
@@ -191,13 +189,13 @@ Le composant permet de supprimer un utilisateur en envoyant une requête DELETE 
 4 - Suppression d'un utilisateur :
 
 - - Envoi d'une requête DELETE à l'API pour supprimer l'utilisateur.
-Mise à jour de la liste des utilisateurs en supprimant l'utilisateur supprimé.
+    Mise à jour de la liste des utilisateurs en supprimant l'utilisateur supprimé.
 
 Ces fonctionnalités permettent à l'administrateur de gérer efficacement les utilisateurs de l'application JOBBOARD.
 
-idem pour les composants : `AdminApply.jsx` , `AdminCompany.jsx`, `AdminJobs.jsx` . 
+idem pour les composants : `AdminApply.jsx` , `AdminCompany.jsx`, `AdminJobs.jsx` .
 
-#### Layout 
+#### Layout
 
 `Header.jsx`
 
@@ -205,7 +203,7 @@ Le composant Header.jsx est responsable de l'affichage de l'en-tête de l'applic
 
 1 - Affichage du logo et du titre de l'application :
 
-- Le logo et le titre de l'application sont affichés en haut de la page. 
+- Le logo et le titre de l'application sont affichés en haut de la page.
 
 2- Navigation principale :
 
@@ -224,7 +222,7 @@ Affichage des informations :
 
 - Les liens linkedins.
 
-### Pages 
+### Pages
 
 Les pages sont situées dans le dossier src/pages. Voici une description détaillée de chaque page :
 
@@ -244,12 +242,11 @@ Les pages sont situées dans le dossier src/pages. Voici une description détail
 
 `JobsPage.jsx` : Cette page affiche les offres d'emploi disponibles. Elle permet aux utilisateurs de parcourir et de filtrer les offres d'emploi.
 
-### Services 
+### Services
 
 Les services sont situés dans le dossier src/service. Ils contiennent la logique métier et les appels API nécessaires pour le fonctionnement de l'application.
 
-
-### Assets 
+### Assets
 
 Les assets de notre projet JOBBOARD sont situés dans le dossier assets et contiennent les ressources utilisées par l'application, telles que les fichiers CSS, les images, et d'autres fichiers multimédias:
 
@@ -264,10 +261,10 @@ Ce sous-dossier contient les fichiers CSS utilisés pour styliser le site. Voici
 
 Ce sous-dossier contient les images utilisées du site. Voici quelques exemples de types d'images que l'on pourrait trouver dans ce dossier :
 
-- Logo du site 
+- Logo du site
 - Les icons utilisées du site
 
-exemple de notre stucture : 
+exemple de notre stucture :
 
 ```
 assets/
@@ -282,7 +279,8 @@ assets/
 
 Les dossiers assets est essentiel à l'organisation du projet Jobboard, pour gerer les ressources et de les séparer.
 
-### technologies utilisées : 
+### technologies utilisées :
+
 ```
 React : Une bibliothèque JavaScript pour construire des interfaces utilisateur.
 React Router : Une bibliothèque pour gérer la navigation dans l'application.
@@ -293,11 +291,12 @@ Webpack : Un module bundler pour compiler le code JavaScript.
 Node.js : Un environnement d'exécution JavaScript côté serveur.
 npm : Un gestionnaire de paquets pour installer les dépendances du projet.
 ```
-### App.js 
+
+### App.js
 
 Le fichier App.js est le point d'entrée principal de votre application React. Il configure les routes de l'application et gère l'authentification de l'utilisateur. Voici une explication détaillée de son fonctionnement et des routes qu'il contient :
 
-Fonctionnement général: 
+Fonctionnement général:
 
 Importations :
 
@@ -328,48 +327,59 @@ Routes :`
 Voici une description détaillée des routes définies dans `App.js` :
 
 `/ `:
+
 - Redirige vers home en utilisant `Navigate`.
 
 home :
+
 - Rend le composant `HomePage`.
 
-
 `/register `:
+
 - Rend le composant `RegisterPage`.
 
 `/login` :
+
 - Rend le composant `LoginPage`.
 
 `/jobs` :
+
 - Rend le composant `JobsPage`.
 
 `/company/:id` :
+
 - Rend le composant `CompanyPage` avec un paramètre `id` pour identifier l'entreprise spécifique.
 
 `/profile` :
+
 - Rend le composant `ProfilePage`.
 
 `/edit-profile/:id` :
+
 - Rend le composant `EditProfilePage` avec un paramètre id pour identifier le profil spécifique à éditer.
 
 `/create-company` :
+
 - Rend le composant `CreateCompanyPage`.
 
 `/edit-company/:id` :
+
 - Rend le composant `EditCompanyPage` avec un paramètre `id` pour identifier l'entreprise spécifique à éditer.
 
 `/advertisement/:id` :
+
 - Rend le composant `AdvertisementPage` avec un paramètre `id` pour identifier l'annonce spécifique.
 
-
 `/apply-advertisement/:id` :
+
 - Rend le composant `ApplyAdvertisementPage` avec un paramètre id pour identifier l'annonce spécifique àlaquelle postuler.
 
 `/dashboard` :
-- Rend le composant `AdminDashboardPage`.
 
+- Rend le composant `AdminDashboardPage`.
 
 Ce fichier configure les routes de l'application et gère l'authentification de l'utilisateur, permettant ainsi une navigation fluide et sécurisée à travers les différentes pages du site.
 
 ### Conclusion
+
 Ce projet JOBBOARD est un site de gestion d'offres d'emploi, développée avec React. Elle permet aux utilisateurs de consulter et de postuler à des offres d'emploi, ainsi que de gérer leurs profils et leurs entreprises.
