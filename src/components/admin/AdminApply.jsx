@@ -209,11 +209,11 @@ function TableJobs() {
   );
 
   useEffect(() => {
-    if (currentUser.role !== "ADMIN") {
+    if (currentUser?.role !== "ADMIN") {
       navigate("/home");
     }
     getAdvertisements();
-  }, [accessToken]);
+  }, [currentUser]);
 
   useEffect(() => {
     if (!rowData) {
@@ -285,6 +285,7 @@ function TableJobs() {
                   name="phone"
                   placeholder="Téléphone..."
                   onChange={handleChange}
+                  pattern="[0-9]{10}$"
                   value={formValues.phone}
                   required
                 />
@@ -369,6 +370,7 @@ function TableJobs() {
                   className="form-input"
                   name="phone"
                   placeholder="Téléphone..."
+                  pattern="[0-9]{10}$"
                   onChange={handleChange}
                   required
                 />
