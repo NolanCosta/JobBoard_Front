@@ -293,6 +293,83 @@ Webpack : Un module bundler pour compiler le code JavaScript.
 Node.js : Un environnement d'exécution JavaScript côté serveur.
 npm : Un gestionnaire de paquets pour installer les dépendances du projet.
 ```
+### App.js 
+
+Le fichier App.js est le point d'entrée principal de votre application React. Il configure les routes de l'application et gère l'authentification de l'utilisateur. Voici une explication détaillée de son fonctionnement et des routes qu'il contient :
+
+Fonctionnement général: 
+
+Importations :
+
+- `react-router-dom` : Utilisé pour la gestion des routes et de la navigation.
+- `React`, `useEffect`, `useState` : Utilisés pour la gestion de l'état et des effets secondaires.
+- Composants de pages : Importation des différentes pages de l'application.
+- `AuthContext`: Contexte d'authentification pour partager l'état d'authentification à travers l'application.
+
+État local :
+
+- `accessToken` : Stocke le jeton d'accès de l'utilisateur, récupéré depuis le `localStorage`.
+- `currentUser` : Stocke les informations de l'utilisateur actuellement connecté.
+
+Effet secondaire :
+
+- `useEffect` : Utilisé pour récupérer les informations de l'utilisateur actuellement connecté lorsque le accessToken change. Si le jeton est invalide ou expiré, il est supprimé du `localStorage`.
+
+Contexte d'authentification :
+
+- `AuthContext.Provider` : Fournit le contexte d'authentification à tous les composants enfants, permettant l'accès à `accessToken`, `setAccessToken`, `currentUser`, et `setCurrentUser`.
+
+Routes :`
+
+- `Router` et `Routes` : Définissent les différentes
+
+`Routes:`
+
+Voici une description détaillée des routes définies dans `App.js` :
+
+`/ `:
+- Redirige vers home en utilisant `Navigate`.
+
+home :
+- Rend le composant `HomePage`.
+
+
+`/register `:
+- Rend le composant `RegisterPage`.
+
+`/login` :
+- Rend le composant `LoginPage`.
+
+`/jobs` :
+- Rend le composant `JobsPage`.
+
+`/company/:id` :
+- Rend le composant `CompanyPage` avec un paramètre `id` pour identifier l'entreprise spécifique.
+
+`/profile` :
+- Rend le composant `ProfilePage`.
+
+`/edit-profile/:id` :
+- Rend le composant `EditProfilePage` avec un paramètre id pour identifier le profil spécifique à éditer.
+
+`/create-company` :
+- Rend le composant `CreateCompanyPage`.
+
+`/edit-company/:id` :
+- Rend le composant `EditCompanyPage` avec un paramètre `id` pour identifier l'entreprise spécifique à éditer.
+
+`/advertisement/:id` :
+-Rend le composant `AdvertisementPage` avec un paramètre `id` pour identifier l'annonce spécifique.
+
+
+`/apply-advertisement/:id` :
+- Rend le composant `ApplyAdvertisementPage` avec un paramètre id pour identifier l'annonce spécifique àlaquelle postuler.
+
+`/dashboard` :
+- Rend le composant `AdminDashboardPage`.
+
+
+Ce fichier configure les routes de l'application et gère l'authentification de l'utilisateur, permettant ainsi une navigation fluide et sécurisée à travers les différentes pages du site.
 
 ### Conclusion
 Ce projet JOBBOARD est une application de gestion d'offres d'emploi, développée avec React. Elle permet aux utilisateurs de consulter et de postuler à des offres d'emploi, ainsi que de gérer leurs profils et leurs entreprises.
