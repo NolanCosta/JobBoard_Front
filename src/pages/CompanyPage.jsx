@@ -33,7 +33,7 @@ function CompanyPage() {
 
   useEffect(() => {
     getCompany();
-  }, []);
+  });
 
   const handleDelete = async () => {
     try {

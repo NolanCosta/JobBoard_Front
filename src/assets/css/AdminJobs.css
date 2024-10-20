@@ -63,8 +63,7 @@
 
    */
 
-
-  /* css page useradmin  */
+/* css page advertisementadmin  */
 
 .size-table {
   width: 90vw;
@@ -100,36 +99,32 @@
   height: auto;
 }
 
-
 /* add users  */
 
-.logousers{
-    width: 4%;
-    height: 4%;
-    border-radius: 10%;
-    background-color: transparent;
-    border: none;
+.logousers {
+  width: 4%;
+  height: 4%;
+  border-radius: 10%;
+  background-color: transparent;
+  border: none;
 }
 
-.logoa{
-    width: 80%;
-    
+.logoa {
+  width: 80%;
 }
 
-.addcompany{
-    display: flex;
-    margin-left: 4%;
-   
+.addAdvertisement {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Style de base pour le formulaire */
-.company-form {
+.advertisement-form {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -162,7 +157,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%; 
+  width: 100%;
 }
 
 .form-button:hover {
@@ -170,7 +165,32 @@
 }
 
 .form-textarea {
-  resize: vertical; 
+  resize: vertical;
 }
 
+.inputMultiple {
+  display: flex;
+  flex-direction: row;
+}
 
+.inputMultiple button {
+  margin-bottom: 15px;
+}
+
+.renderElements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+}
+
+.renderElements p {
+  padding: 0.5% 2%;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+}
+
+.deleteElement {
+  border: none;
+  background-color: transparent;
+  font-size: x-small;
+}

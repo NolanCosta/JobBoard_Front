@@ -29,14 +29,14 @@ function TableUser() {
   const [users, setUsers] = useState([]);
 
   const [formValues, setFormValues] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    address: '',
-    zip_code: '',
-    city: '',
-    role: ''
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    zip_code: "",
+    city: "",
+    role: "",
   });
 
   // useEffect(() => {
@@ -141,8 +141,6 @@ function TableUser() {
   }, []);
 
   const ActionsButtonComponent = (props) => {
-    console.log(props);
-    
     const handleDelete = async () => {
       try {
         const option = {
@@ -169,19 +167,21 @@ function TableUser() {
         setMessage("Error: " + error.message);
       }
     };
-    
+
     const handleEdit = (user) => {
       console.log(user);
-      
+
       setEditingUser((data) => (data === user.id ? null : user.id));
 
       setFormValues({ ...user }); // Préremplit les champs du formulaire avec les valeurs actuelles de l'utilisateur
     };
 
-  
     return (
       <div className="actionsUserAdmin">
-        <button className="editUserAdmin" onClick={() => handleEdit(props.data)}>
+        <button
+          className="editUserAdmin"
+          onClick={() => handleEdit(props.data)}
+        >
           <img src={EditLogo} alt="edit logo" />
         </button>
         <button className="deleteUserAdmin" onClick={handleDelete}>
@@ -191,149 +191,153 @@ function TableUser() {
     );
   };
 
- // UPDATE UN UTILISATEUR 
-      
-      // Fonction pour capturer les changements dans le formulaire
-      const handleChangeForm = (e) => {
-        setFormValues({
-          ...formValues,
-          [e.target.name]: e.target.value,
-        });
-      };
-    
-      // Soumettre la mise à jour de l'utilisateur avec fetch
-      const handleUpdateSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await fetch(`${process.env.REACT_APP_API_URL}/user/${editingUser}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formValues), // Envoyer les données sous forme de JSON
-          });
-    
-          const result = await response.json(); // Traite la réponse
-          console.log('Utilisateur mis à jour:', result);
-    
-          // Après mise à jour, réinitialise l'utilisateur en cours de modification
-          setEditingUser(null);
-          getUsers(); // Recharge la liste des utilisateurs pour montrer les modifications
-        } catch (error) {
-          console.error('Erreur lors de la mise à jour de l\'utilisateur:', error);
-        }
-      };
+  // UPDATE UN UTILISATEUR
 
-      const colDefs = useMemo(() => [
-        { field: "firstname", headerName: "Prénom", flex: 2 },
-        { field: "lastname", headerName: "Nom de famille", flex: 2 },
-        { field: "email", headerName: "Mail", flex: 3 },
-        { field: "phone", headerName: "Téléphone", flex: 3 },
-        { field: "Informations", cellRenderer: ActionsButtonComponent, flex: 2 },
-      ], []);
+  // Fonction pour capturer les changements dans le formulaire
+  const handleChangeForm = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Soumettre la mise à jour de l'utilisateur avec fetch
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/update/${editingUser}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formValues), // Envoyer les données sous forme de JSON
+        }
+      );
+
+      const result = await response.json(); // Traite la réponse
+      console.log("Utilisateur mis à jour:", result);
+
+      // Après mise à jour, réinitialise l'utilisateur en cours de modification
+      setEditingUser(null);
+      getUsers(); // Recharge la liste des utilisateurs pour montrer les modifications
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de l'utilisateur:", error);
+    }
+  };
+
+  const colDefs = useMemo(
+    () => [
+      { field: "firstname", headerName: "Prénom", flex: 2 },
+      { field: "lastname", headerName: "Nom de famille", flex: 2 },
+      { field: "email", headerName: "Mail", flex: 3 },
+      { field: "phone", headerName: "Téléphone", flex: 3 },
+      { field: "Informations", cellRenderer: ActionsButtonComponent, flex: 2 },
+    ],
+    []
+  );
 
   return (
     <>
+      <div className="admin-user-table-container">
+        {editingUser && (
+          <div className="edit-form">
+            <h2>Modifier l'utilisateur</h2>
+            <form onSubmit={handleUpdateSubmit}>
+              <div className="form-row">
+                <label>Prénom:</label>
+                <input
+                  type="text"
+                  name="firstname"
+                  value={formValues.firstname}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-<div className="admin-user-table-container">
+              <div className="form-row">
+                <label>Nom:</label>
+                <input
+                  type="text"
+                  name="lastname"
+                  value={formValues.lastname}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-      {editingUser && (
-        <div className="edit-form">
-          <h2>Modifier l'utilisateur</h2>
-          <form onSubmit={handleUpdateSubmit}>
-            <div className="form-row">
-              <label>Prénom:</label>
-              <input
-                type="text"
-                name="firstname"
-                value={formValues.firstname}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
+              <div className="form-row">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formValues.email}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-            <div className="form-row">
-              <label>Nom:</label>
-              <input
-                type="text"
-                name="lastname"
-                value={formValues.lastname}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
+              <div className="form-row">
+                <label>Téléphone:</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formValues.phone}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-            <div className="form-row">
-              <label>Email:</label>
-              <input
-                type="email"
-                name="email"
-                value={formValues.email}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
+              <div className="form-row">
+                <label>Adresse:</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={formValues.address}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-            <div className="form-row">
-              <label>Téléphone:</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formValues.phone}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
+              <div className="form-row">
+                <label>Code postal:</label>
+                <input
+                  type="text"
+                  name="zip_code"
+                  value={formValues.zip_code}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-            <div className="form-row">
-              <label>Adresse:</label>
-              <input
-                type="text"
-                name="address"
-                value={formValues.address}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
+              <div className="form-row">
+                <label>Ville:</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={formValues.city}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-            <div className="form-row">
-              <label>Code postal:</label>
-              <input
-                type="text"
-                name="zip_code"
-                value={formValues.zip_code}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
+              <div className="form-row">
+                <label>Rôle:</label>
+                <input
+                  type="text"
+                  name="role"
+                  value={formValues.role}
+                  onChange={handleChangeForm}
+                  required
+                />
+              </div>
 
-            <div className="form-row">
-              <label>Ville:</label>
-              <input
-                type="text"
-                name="city"
-                value={formValues.city}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
-
-            <div className="form-row">
-              <label>Rôle:</label>
-              <input
-                type="text"
-                name="role"
-                value={formValues.role}
-                onChange={handleChangeForm}
-                required
-              />
-            </div>
-
-            <button type="submit">Mettre à jour</button>
-          </form>
-        </div>
-      )}
-    </div>
+              <button type="submit">Mettre à jour</button>
+            </form>
+          </div>
+        )}
+      </div>
 
       <div className="adduser">
         <button className="logousers" onClick={() => setAddUser(!addUser)}>
@@ -342,64 +346,64 @@ function TableUser() {
 
         {addUser && (
           <div className="form">
-          <form className="user-form" onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-row">
-              <input
-                type="text"
-                id="lastname"
-                className="form-input"
-                name="lastname"
-                placeholder="Nom..."
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="text"
-                id="firstname"
-                className="form-input"
-                name="firstname"
-                placeholder="Prénom..."
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-row">
-              <input
-                type="email"
-                id="email"
-                className="form-input"
-                name="email"
-                placeholder="Email..."
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="tel"
-                id="phone"
-                className="form-input"
-                name="phone"
-                placeholder="Téléphone..."
-                onChange={handleChange}
-                pattern="[0-9]{10}$"
-                required
-              />
-            </div>
-            <div className="form-row">
-              <input
-                type="password"
-                id="password"
-                className="form-input"
-                name="password"
-                placeholder="Mot de passe..."
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <form className="user-form" onSubmit={(e) => handleSubmit(e)}>
+              <div className="form-row">
+                <input
+                  type="text"
+                  id="lastname"
+                  className="form-input"
+                  name="lastname"
+                  placeholder="Nom..."
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="text"
+                  id="firstname"
+                  className="form-input"
+                  name="firstname"
+                  placeholder="Prénom..."
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-row">
+                <input
+                  type="email"
+                  id="email"
+                  className="form-input"
+                  name="email"
+                  placeholder="Email..."
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="tel"
+                  id="phone"
+                  className="form-input"
+                  name="phone"
+                  placeholder="Téléphone..."
+                  onChange={handleChange}
+                  pattern="[0-9]{10}$"
+                  required
+                />
+              </div>
+              <div className="form-row">
+                <input
+                  type="password"
+                  id="password"
+                  className="form-input"
+                  name="password"
+                  placeholder="Mot de passe..."
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <button type="submit" className="form-button">
-              Ajouter
-            </button>
-          </form>
+              <button type="submit" className="form-button">
+                Ajouter
+              </button>
+            </form>
           </div>
         )}
       </div>

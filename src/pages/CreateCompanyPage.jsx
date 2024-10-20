@@ -77,7 +77,7 @@ export default function CreateCompanyPage() {
         body: formData,
       };
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/company/store`,
+        `${process.env.REACT_APP_API_URL}/company/create`,
         options
       );
 
