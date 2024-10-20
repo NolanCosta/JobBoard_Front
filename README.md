@@ -359,7 +359,7 @@ home :
 - Rend le composant `EditCompanyPage` avec un paramètre `id` pour identifier l'entreprise spécifique à éditer.
 
 `/advertisement/:id` :
--Rend le composant `AdvertisementPage` avec un paramètre `id` pour identifier l'annonce spécifique.
+- Rend le composant `AdvertisementPage` avec un paramètre `id` pour identifier l'annonce spécifique.
 
 
 `/apply-advertisement/:id` :
@@ -372,4 +372,4 @@ home :
 Ce fichier configure les routes de l'application et gère l'authentification de l'utilisateur, permettant ainsi une navigation fluide et sécurisée à travers les différentes pages du site.
 
 ### Conclusion
-Ce projet JOBBOARD est une application de gestion d'offres d'emploi, développée avec React. Elle permet aux utilisateurs de consulter et de postuler à des offres d'emploi, ainsi que de gérer leurs profils et leurs entreprises.
+Ce projet JOBBOARD est un site de gestion d'offres d'emploi, développée avec React. Elle permet aux utilisateurs de consulter et de postuler à des offres d'emploi, ainsi que de gérer leurs profils et leurs entreprises.
