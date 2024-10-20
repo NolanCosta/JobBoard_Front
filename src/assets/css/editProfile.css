@@ -5,7 +5,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: #efecec;
+  background-color: #9d3737;
+  
 }
 
 .editProfileForm {
@@ -19,8 +20,8 @@
 }
 
 .editProfileInputsForm {
-  width: 45%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -41,7 +42,7 @@
 .editProfileInputPassword,
 .editProfileInputConfirmPassword {
   width: 95%;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 1%;
 }
 
@@ -67,4 +68,57 @@
 .editProfileButton:hover {
   box-shadow: 0 0 10px grey;
   border: 2px solid #fff;
+}
+
+/* Responsive pour les tablettes */
+@media (max-width: 1024px) {
+  .editProfileForm {
+    width: 85%; /* Réduire la largeur du formulaire */
+   
+  }
+
+  .editProfileInputsForm {
+    width: 79%;
+    height: 70%;
+  }
+
+  .editProfileButton {
+    width: 40%; /* Augmenter la largeur du bouton sur tablette */
+  }
+}
+
+/* Responsive pour les téléphones */
+@media (max-width: 768px) {
+  .editProfileContainer {
+    flex-direction: column; /* Passer à une disposition en colonne */
+    padding: 5% 0; /* Ajouter du padding vertical */
+  }
+
+  .editProfileForm {
+    width: 95%; /* Largeur presque pleine pour les téléphones */
+ 
+  }
+
+  .editProfileInputsForm {
+    width: 90%; /* Largeur presque pleine sur mobile */
+    padding: 5%; /* Plus de padding pour les petits écrans */
+  
+  }
+
+  .editProfileInputLastname,
+  .editProfileInputFirstname,
+  .editProfileInputEmail,
+  .editProfileInputPhone,
+  .editProfileInputAddress,
+  .editProfileInputCity,
+  .editProfileInputZipCode,
+  .editProfileInputPassword,
+  .editProfileInputConfirmPassword {
+    width: 100%; /* Les champs prennent toute la largeur */
+    padding: 2%;
+  }
+
+  .editProfileButton {
+    width: 50%; /* Largeur du bouton ajustée pour mobile */
+  }
 }

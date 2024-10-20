@@ -13,8 +13,6 @@ import JobsPage from "./pages/JobsPage";
 import CompanyPage from "./pages/CompanyPage";
 import ProfilePage from "./pages/ProfilePage";
 import EditProfilePage from "./pages/EditProfilePage";
-import AdminUserPage from "./pages/Admin/AdminUserPage";
-import AdminHomePage from "./pages/Admin/AdminHomePage";
 import AdminDashboardPage from "./pages/Admin/AdminDashboardPage";
 import CreateCompanyPage from "./pages/CreateCompanyPage";
 import EditCompanyPage from "./pages/EditCompanyPage";
@@ -76,8 +74,6 @@ function App() {
           <Route path="/edit-company/:id" element={<EditCompanyPage />} />
           <Route path="/advertisement/:id" element={<AdvertisementPage />} />
           <Route path="/apply-advertisement/:id" element={<ApplyAdvertisementPage />} />
-          <Route path="/admin" element={<AdminUserPage />} />
-          <Route path="/adminhome" element={<AdminHomePage />} />
           <Route path="/dashboard" element={<AdminDashboardPage />} />
         </Routes>
       </Router>

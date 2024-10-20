@@ -2,7 +2,7 @@
 
 
 .navbar {
-  width: 99vw !important;
+  width: 100% !important;
   display: flex !important;
   flex-direction: row !important;
   justify-content: space-between !important;
@@ -17,11 +17,12 @@
 }
 
 .menu {
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  gap: 40px;
 }
 
 .menu a {
@@ -48,6 +49,39 @@
 
 .menu a:hover::after {
   transform: translateX(-50%) scaleX(1);
+}
+
+.toggle-container {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 200px;
+  height: 40px;
+}
+
+.toggle-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-button.active {
+  background-color: black;
+  color: white;
+}
+
+.toggle-button:not(.active) {
+  background-color: white;
+  color: black;
+}
+
+.toggle-button:first-child {
+  border-right: 1px solid black;
 }
 
 .ecart {
@@ -120,19 +154,20 @@
 /* Tablettes */
 @media (max-width: 1024px) {
   .navbar {
-    flex-direction: column !important;
+    flex-direction: row !important;
     height: auto !important;
     padding: 10px 2% !important;
   }
 
   .logo1 {
-    height: 80px;
+    height: 100px;
     margin-bottom: 10px;
   }
 
   .menu {
-    width: 100%;
-    justify-content: space-around;
+    width: 60%;
+    justify-content: end;
+    gap: 64px;
   }
 
   .menu a {
@@ -142,6 +177,15 @@
 
   .ecart {
     gap: 40px;
+  }
+  
+  .toggle-container {
+    width: 180px;
+    height: 35px;
+  }
+
+  .toggle-button {
+    font-size: 14px;
   }
 }
 
@@ -176,5 +220,18 @@
   .menu-mobile a {
     font-size: 12px;
     margin: 5px 0;
+  }
+
+  .ecart {
+    gap: 20px;
+  }
+
+  .toggle-container {
+    width: 150px;
+    height: 30px;
+  }
+
+  .toggle-button {
+    font-size: 12px;
   }
 }

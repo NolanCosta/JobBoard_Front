@@ -274,7 +274,7 @@ function TableJobs() {
 
   return (
     <>
-      <div>
+      <div className="admin-jobs-table-container">
         {editAdvertisement && (
           <div className="form">
             <form

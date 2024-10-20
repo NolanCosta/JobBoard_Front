@@ -30,7 +30,7 @@
   
   .deleteUserAdmin img,
   .editUserAdmin img {
-    width: 35%;
+    width: 62% ;
     height: auto;
   }
   
@@ -166,3 +166,4 @@
   .edit-form button:hover {
     background-color: #45a049;
   }
+

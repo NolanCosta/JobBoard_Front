@@ -1,6 +1,7 @@
+/* Styles de base */
 .companyContainer {
   width: 100%;
-  min-height: 80vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -97,6 +98,11 @@
   font-weight: bold;
 }
 
+.companyAdvertisementButtonShow:hover {
+  background-color: black;
+  color: white;
+}
+
 .companyAdvertisementButtonDelete,
 .companyAdvertisementButtonEdit {
   width: 20%;
@@ -112,8 +118,78 @@
   border: 2px solid orange;
   color: orange;
 }
+.companyAdvertisementButtonEdit:hover {
+  background-color: orange;
+  color: white;
+}
 
 .companyAdvertisementButtonDelete {
   border: 2px solid red;
   color: red;
+}
+.companyAdvertisementButtonDelete:hover {
+  background-color: red;
+  color: white;
+}
+
+
+@media (max-width: 1024px) {
+ 
+
+
+  .companyInformations {
+    flex-direction: column;
+    height: auto;
+    padding: 0 5%;
+  }
+
+  .companyInformationsPart1, 
+  .companyInformationsPart2 {
+    width: 100%;
+  }
+
+  .companyAdvertisementButtons {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10%;
+  }
+
+  .companyAdvertisementButtonShow,
+  .companyAdvertisementButtonDelete,
+  .companyAdvertisementButtonEdit {
+    width: 85%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Pour les téléphones (petits écrans) */
+@media (max-width: 768px) {
+  .companyInformations {
+    flex-direction: column;
+    height: auto;
+   
+  }
+
+  .companyInformationsPart1,
+  .companyInformationsPart2 {
+    width: 100%;
+  }
+
+  .companyName img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .companyAdvertisementButtons {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2%;
+  }
+
+  .companyAdvertisementButtonShow,
+  .companyAdvertisementButtonDelete,
+  .companyAdvertisementButtonEdit {
+    width: 80%;
+    margin-bottom: 10px;
+  }
 }

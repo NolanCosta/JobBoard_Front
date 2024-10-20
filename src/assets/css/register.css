@@ -1,3 +1,4 @@
+/* Styles de base */
 .container {
   display: flex;
   flex-direction: column;
@@ -34,7 +35,7 @@
 .inputFormRegister {
   width: 26.5%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 15px;
   border: 2px solid #000;
   padding: 10px;
 }
@@ -58,4 +59,42 @@
 
 .buttonFormRegister:hover {
   box-shadow: 0 0 10px grey;
+}
+
+
+@media (max-width: 1024px) {
+  .authLogo {
+    width: 50%; /* Réduire un peu la taille pour les grands écrans */
+  }
+  .inputFormRegister {
+    width: 55%;
+    border-radius: 10px;
+  }
+  .buttonFormRegister {
+    width: 50%;
+    font-size: medium;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .authLogo {
+    width: 70%;
+  }
+  .inputFormRegister {
+    width: 85%; /* La largeur est presque pleine sur les petits écrans */
+    border-radius: 10px;
+  }
+  .buttonFormRegister {
+    width: 30%;
+    font-size: medium;
+  }
+
+  .formRegisterElement {
+   
+    flex-direction: column;
+    gap: 25%;
+    align-items: center;
+  
+    }
 }
