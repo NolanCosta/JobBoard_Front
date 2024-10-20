@@ -9,10 +9,9 @@
 
 /* Footer Container */
 .footer-container {
- 
   color: black;
   padding: 40px 0 0 0;
-  border: 2px solid black;
+  border-top: 2px solid black;
   margin-top: 30px;
 }
 
@@ -25,28 +24,24 @@
   padding: 0 20px;
 }
 
-
 .footer-logo {
- display: flex;
+  display: flex;
   align-items: center;
 }
 
 .footer-logo img {
   max-width: 250px;
   height: auto;
-  
 }
-
 
 .footer-contacts,
 .footer-social {
-
   margin: 0 20px;
 }
 
 .footer-contacts h3,
 .footer-social h3 {
-  color: rgb(153, 7, 7); 
+  color: rgb(153, 7, 7);
   margin-bottom: 15px;
   font-size: 20px;
 }
@@ -72,12 +67,12 @@
 
 .footer-contacts ul li a:hover,
 .footer-social ul li a:hover {
-  color: rgb(153, 7, 7);  
+  color: rgb(153, 7, 7);
 }
 
 .footer-bottom {
   text-align: center;
-  background-color: #222; 
+  background-color: #222;
   padding: 10px;
   margin-top: 30px;
 }
@@ -93,9 +88,8 @@
   margin-right: 15px;
 }
 
-
 .logo {
-  width: 30px;  
+  width: 30px;
   height: auto;
 }
 
@@ -106,7 +100,7 @@
     align-items: center;
     text-align: center;
   }
-  
+
   .footer-logo img {
     max-width: 200px; /* Réduction de la taille du logo pour tablette */
   }

@@ -46,21 +46,20 @@
 }
 
 .buttonFormRegister {
-  width: 60%;
+  width: 57%;
   height: 10%;
   border-radius: 20px;
   background-color: #000;
   color: #fff;
   font-size: larger;
   font-weight: bold;
-  margin-top: 2%;
+  margin-top: 1%;
   cursor: pointer;
 }
 
 .buttonFormRegister:hover {
   box-shadow: 0 0 10px grey;
 }
-
 
 @media (max-width: 1024px) {
   .authLogo {
@@ -76,7 +75,6 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .authLogo {
     width: 70%;
@@ -91,10 +89,8 @@
   }
 
   .formRegisterElement {
-   
     flex-direction: column;
     gap: 25%;
     align-items: center;
-  
-    }
+  }
 }

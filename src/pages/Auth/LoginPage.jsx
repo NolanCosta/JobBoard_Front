@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Header from "../../components/layout/header.jsx";
 import Footer from "../../components/layout/footer.jsx";
 import logo from "../../assets/image/logoNM.png";
 import "../../assets/css/login.css";
@@ -78,6 +79,7 @@ function CompanyPage() {
 
   return (
     <div>
+      <Header />
       <div className="container">
         <img className="authLogo" src={logo} alt="Logo" />
         <form className="formLogin" onSubmit={(e) => handleSubmit(e)}>
@@ -107,6 +109,9 @@ function CompanyPage() {
               Se connecter
             </button>
           )}
+          <p>
+            Pas encore de compte ? <a href="/register">Inscrivez-vous ici</a>
+          </p>
         </form>
       </div>
       <Footer />
