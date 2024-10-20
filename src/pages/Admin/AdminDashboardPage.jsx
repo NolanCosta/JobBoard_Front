@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../../components/admin/headerAdmin.jsx";
+import Header from "../../components/layout/header.jsx";
 import Footer from "../../components/layout/footer.jsx";
 import Backoffice from "../../components/admin/Backoffice.jsx";
 import AdminUser from "../../components/admin/AdminUser.jsx";

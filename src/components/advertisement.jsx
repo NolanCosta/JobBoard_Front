@@ -25,6 +25,11 @@ const Advertisement = () => {
   }, []);
 
   return (
+
+    <div>
+      <div>
+        <h2>Nos annonces:</h2>
+      </div>
     <div className="job-cards-container">
       {advertisements.map((advertisement) => (
         <div key={advertisement.id} className="job-card">
@@ -56,6 +61,7 @@ const Advertisement = () => {
           <a href={`/advertisement/${advertisement.id}`}>Voir l'annonce</a>
         </div>
       ))}
+    </div>
     </div>
   );
 };

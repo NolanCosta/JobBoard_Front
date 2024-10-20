@@ -38,7 +38,9 @@ function AdvertisementPage() {
   return (
     <div>
       <Header />
+      
       <div className="advertisementContainer">
+        
         <div className="advertisementElement1">
           <div className="advertisementElement1Part1">
             <h1 className="advertisementTitle">{advertisement.title}</h1>
