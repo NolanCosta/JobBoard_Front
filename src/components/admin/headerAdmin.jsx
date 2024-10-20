@@ -15,7 +15,7 @@ function Header() {
                 <div className="menu">
                     <NavLink className={({ isActive }) => isActive ? 'menu-button' : ''} to="/home">Accueil</NavLink >
 
-                    <NavLink className={({ isActive }) => isActive ? 'menu-button' : ''} to="/dashboard">Backoffice</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'menu-button' : ''} to="/dashboard">Dashboard</NavLink>
 
                     <NavLink className={({ isActive }) => isActive ? 'menu-button' : ''} to="/profile">Profil</NavLink >
                 </div>

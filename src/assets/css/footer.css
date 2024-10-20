@@ -9,9 +9,10 @@
 
 /* Footer Container */
 .footer-container {
-  background-color: #b0abab;
+ 
   color: black;
   padding: 40px 0 0 0;
+  border: 2px solid black;
 }
 
 .footer-content {
@@ -30,7 +31,7 @@
 }
 
 .footer-logo img {
-  max-width: 150px;
+  max-width: 250px;
   height: auto;
   
 }
@@ -44,7 +45,7 @@
 
 .footer-contacts h3,
 .footer-social h3 {
-  color: #c66363; 
+  color: rgb(153, 7, 7); 
   margin-bottom: 15px;
   font-size: 20px;
 }
@@ -70,7 +71,7 @@
 
 .footer-contacts ul li a:hover,
 .footer-social ul li a:hover {
-  color: #d47272; 
+  color: rgb(153, 7, 7);  
 }
 
 .footer-bottom {
@@ -89,4 +90,75 @@
 .social-links li {
   display: inline-block;
   margin-right: 15px;
+}
+
+
+.logo {
+  width: 30px;  
+  height: auto;
+}
+
+/* Pour les tablettes (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-logo img {
+    max-width: 200px; /* Réduction de la taille du logo pour tablette */
+  }
+
+  .footer-contacts,
+  .footer-social {
+    margin: 20px 0; /* Espacement supplémentaire pour les éléments */
+  }
+
+  .footer-contacts h3,
+  .footer-social h3 {
+    font-size: 18px;
+  }
+
+  .footer-contacts ul li,
+  .footer-social ul li {
+    font-size: 14px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+  }
+}
+
+/* Pour les téléphones (max-width: 768px) */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .footer-logo img {
+    max-width: 150px; /* Réduction encore plus petite du logo pour mobile */
+  }
+
+  .footer-contacts h3,
+  .footer-social h3 {
+    font-size: 16px;
+  }
+
+  .footer-contacts ul li,
+  .footer-social ul li {
+    font-size: 12px;
+  }
+
+  .footer-contacts,
+  .footer-social {
+    margin: 15px 0; /* Moins d'espacement pour les petits écrans */
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+  }
 }

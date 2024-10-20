@@ -1,16 +1,62 @@
 .buttonLogout {
-  display: flex;
-  flex-direction: row;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 15px;
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 5px;
+  gap: 10px;
+  background-color: #f8f9fa; 
+  color: #343a40; 
+  border: 2px solid #343a40;
+  border-radius: 25px; 
+  padding: 10px 20px; 
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.buttonLogout:hover {
+  background-color: #343a40;
+  color: white; 
 }
 
 .imgLogout {
-  width: 15%;
+  width: 20px; 
   height: auto;
+}
+
+
+/* Ordinateur - écrans larges */
+@media (min-width: 1025px) {
+  .buttonLogout {
+    font-size: 18px;
+    padding: 12px 25px;
+  }
+
+  .imgLogout {
+    width: 24px;
+  }
+}
+
+/* Tablette - écrans moyens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .buttonLogout {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .imgLogout {
+    width: 22px;
+  }
+}
+
+/* Téléphone - écrans petits */
+@media (max-width: 767px) {
+  .buttonLogout {
+    font-size: 14px;
+    padding: 8px 15px;
+    gap: 8px;
+  }
+
+  .imgLogout {
+    width: 18px;
+  }
 }
