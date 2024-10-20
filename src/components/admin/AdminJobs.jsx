@@ -234,7 +234,7 @@ function TableJobs() {
         body: JSON.stringify(formValues),
       };
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/advertisement/${editAdvertisement}`,
+        `${process.env.REACT_APP_API_URL}/advertisement/update/${editAdvertisement}`,
         options
       );
 
@@ -254,7 +254,7 @@ function TableJobs() {
       { field: "sector", headerName: "Secteur", flex: 3 },
       { field: "wage", headerName: "Salaire", flex: 3 },
       { field: "working_time", headerName: "Temps de travail", flex: 2 },
-      { field: "Informations", cellRenderer: ActionsButtonComponent, flex: 2 },
+      { field: "Actions", cellRenderer: ActionsButtonComponent, flex: 2 },
     ],
     []
   );
