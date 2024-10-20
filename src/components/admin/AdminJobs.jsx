@@ -260,11 +260,11 @@ function TableJobs() {
   );
 
   useEffect(() => {
-    if (currentUser.role !== "ADMIN") {
+    if (currentUser?.role !== "ADMIN") {
       navigate("/home");
     }
     getCompanies();
-  }, [accessToken]);
+  }, [currentUser]);
 
   useEffect(() => {
     if (!rowData) {

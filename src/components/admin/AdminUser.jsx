@@ -6,27 +6,18 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 import TrashLogo from "../../assets/image/trash.png";
 import EditLogo from "../../assets/image/edit.png";
 import logo from "../../assets/image/addusers.png";
-// import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../../assets/css/AdminUser.css";
 import { useNavigate } from "react-router-dom";
 
 function TableUser() {
-  const { accessToken } = useContext(AuthContext);
+  const { accessToken, currentUser } = useContext(AuthContext);
   const [addUser, setAddUser] = useState(false);
-  const [lastname, setLastname] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const [rowData, setRowData] = useState();
-  // const navigate = useNavigate();
-  const [message, setMessage] = useState();
 
   const [editingUser, setEditingUser] = useState(null);
-  const [users, setUsers] = useState([]);
 
   const [formValues, setFormValues] = useState({
     firstname: "",
@@ -39,68 +30,6 @@ function TableUser() {
     role: "",
   });
 
-  // useEffect(() => {
-  //   if (currentUser.role !== "ADMIN") {
-  //     navigate("/home");
-  //   }
-  // }, []);
-
-  // button pour ajouter des utilisateurs
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "lastname") {
-      setLastname(value);
-    } else if (name === "firstname") {
-      setFirstname(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "phone") {
-      setPhone(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("lastname", lastname);
-    formData.append("firstname", firstname);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("password", password);
-    try {
-      const options = {
-        method: "POST",
-        body: formData,
-      };
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/user/create`,
-        options
-      );
-
-      setLastname("");
-      setFirstname("");
-      setEmail("");
-      setPhone("");
-      setPassword("");
-
-      if (response.ok) {
-        const data = await response.json();
-        toast.success(data.message);
-      } else {
-        const errorData = await response.json();
-        console.log(errorData.errors);
-      }
-    } catch (error) {
-      if (error?.response?.status === 422) {
-        console.log(error.response.data.errors);
-      }
-    }
-  };
-
-  // afficher les utilisateurs
   const getUsers = async () => {
     try {
       const option = {
@@ -140,6 +69,38 @@ function TableUser() {
     };
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(formValues),
+      };
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/create`,
+        options
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        toast.success(data.message);
+        setAddUser(false);
+        await getUsers();
+      } else {
+        const errorData = await response.json();
+        console.log(errorData.errors);
+      }
+    } catch (error) {
+      if (error?.response?.status === 422) {
+        console.log(error.response.data.errors);
+      }
+    }
+  };
+
   const ActionsButtonComponent = (props) => {
     const handleDelete = async () => {
       try {
@@ -164,16 +125,14 @@ function TableUser() {
           toast.error(data.message);
         }
       } catch (error) {
-        setMessage("Error: " + error.message);
+        console.log("Error: " + error.message);
       }
     };
 
     const handleEdit = (user) => {
-      console.log(user);
-
       setEditingUser((data) => (data === user.id ? null : user.id));
 
-      setFormValues({ ...user }); // Préremplit les champs du formulaire avec les valeurs actuelles de l'utilisateur
+      setFormValues({ ...user });
     };
 
     return (
@@ -191,9 +150,6 @@ function TableUser() {
     );
   };
 
-  // UPDATE UN UTILISATEUR
-
-  // Fonction pour capturer les changements dans le formulaire
   const handleChangeForm = (e) => {
     setFormValues({
       ...formValues,
@@ -201,7 +157,6 @@ function TableUser() {
     });
   };
 
-  // Soumettre la mise à jour de l'utilisateur avec fetch
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -211,17 +166,21 @@ function TableUser() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
-          body: JSON.stringify(formValues), // Envoyer les données sous forme de JSON
+          body: JSON.stringify(formValues),
         }
       );
 
-      const result = await response.json(); // Traite la réponse
-      console.log("Utilisateur mis à jour:", result);
+      const data = await response.json();
 
-      // Après mise à jour, réinitialise l'utilisateur en cours de modification
-      setEditingUser(null);
-      getUsers(); // Recharge la liste des utilisateurs pour montrer les modifications
+      if (response.ok) {
+        toast.success(data.message);
+        setEditingUser(null);
+        await getUsers();
+      } else {
+        toast.error(data.message);
+      }
     } catch (error) {
       console.error("Erreur lors de la mise à jour de l'utilisateur:", error);
     }
@@ -237,6 +196,12 @@ function TableUser() {
     ],
     []
   );
+
+  useEffect(() => {
+    if (currentUser?.role !== "ADMIN") {
+      navigate("/home");
+    }
+  }, [currentUser]);
 
   return (
     <>
@@ -285,6 +250,7 @@ function TableUser() {
                   name="phone"
                   value={formValues.phone}
                   onChange={handleChangeForm}
+                  pattern="[0-9]{10}$"
                   required
                 />
               </div>
@@ -296,7 +262,6 @@ function TableUser() {
                   name="address"
                   value={formValues.address}
                   onChange={handleChangeForm}
-                  required
                 />
               </div>
 
@@ -307,7 +272,6 @@ function TableUser() {
                   name="zip_code"
                   value={formValues.zip_code}
                   onChange={handleChangeForm}
-                  required
                 />
               </div>
 
@@ -318,7 +282,6 @@ function TableUser() {
                   name="city"
                   value={formValues.city}
                   onChange={handleChangeForm}
-                  required
                 />
               </div>
 
@@ -354,7 +317,7 @@ function TableUser() {
                   className="form-input"
                   name="lastname"
                   placeholder="Nom..."
-                  onChange={handleChange}
+                  onChange={handleChangeForm}
                   required
                 />
                 <input
@@ -363,7 +326,7 @@ function TableUser() {
                   className="form-input"
                   name="firstname"
                   placeholder="Prénom..."
-                  onChange={handleChange}
+                  onChange={handleChangeForm}
                   required
                 />
               </div>
@@ -374,7 +337,7 @@ function TableUser() {
                   className="form-input"
                   name="email"
                   placeholder="Email..."
-                  onChange={handleChange}
+                  onChange={handleChangeForm}
                   required
                 />
                 <input
@@ -383,7 +346,7 @@ function TableUser() {
                   className="form-input"
                   name="phone"
                   placeholder="Téléphone..."
-                  onChange={handleChange}
+                  onChange={handleChangeForm}
                   pattern="[0-9]{10}$"
                   required
                 />
@@ -395,7 +358,7 @@ function TableUser() {
                   className="form-input"
                   name="password"
                   placeholder="Mot de passe..."
-                  onChange={handleChange}
+                  onChange={handleChangeForm}
                   required
                 />
               </div>
