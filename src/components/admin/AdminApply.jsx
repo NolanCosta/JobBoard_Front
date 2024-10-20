@@ -223,7 +223,7 @@ function TableJobs() {
 
   return (
     <>
-      <div>
+     <div className="admin-jobs-table-container">
         {editFollowAdvertisement && (
           <div className="form">
             <form

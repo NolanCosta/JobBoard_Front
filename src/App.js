@@ -73,10 +73,7 @@ function App() {
           <Route path="/create-company" element={<CreateCompanyPage />} />
           <Route path="/edit-company/:id" element={<EditCompanyPage />} />
           <Route path="/advertisement/:id" element={<AdvertisementPage />} />
-          <Route
-            path="/apply-advertisement/:id"
-            element={<ApplyAdvertisementPage />}
-          />
+          <Route path="/apply-advertisement/:id" element={<ApplyAdvertisementPage />} />
           <Route path="/dashboard" element={<AdminDashboardPage />} />
         </Routes>
       </Router>

@@ -1,67 +1,119 @@
+/* Styles de base */
 
-/* css components backoffice */
-
+/* Dashboard */
 .dashboard {
-    width: 100%;
-    padding: 20px;
-    display: flex;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard h2 {
+  color: #ecf0f1;
+}
+
+.dashboard ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+  margin-left: 40px;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* AdminDashboardPage */
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #536474;
+  color: white;
+}
+
+.content-container {
+  width: 80%;
+  padding: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #9d3737;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #c12020;
+}
+
+h1 {
+  color: #34495e;
+}
+
+/* Media Queries */
+
+@media (max-width: 1024px) {
+  .dashboard {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .dashboard h2 {
-    color: #ecf0f1;
-    
-  }
-  
-  .dashboard ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 3%;
-    margin-left: 40px;
-    margin: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
+    gap:10%;
   }
 
-/* css pour AdminDashboardPage  */
-  .App {
-    display: flex;
-    flex-direction: column;
+  .dashboard ul {
+    gap: 2%;
   }
-  
-  .dashboard-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color: #536474;
-    color: white;
-  }
-  
+
   .content-container {
-    width: 80%;
-    padding: 20px;
+    width: 85%;
   }
-  
+
   .button {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #9d3737;
-    color: white;
-    border: none;
-    cursor: pointer;
+    padding: 8px 15px;
   }
-  
-  .button:hover {
-    background-color: #c12020;
+}
+
+/* Pour les téléphones (petits écrans) */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column; /* Alignement vertical */
+    padding: 10px;
   }
-  
+
+  .dashboard ul {
+    flex-direction: column; /* Menu en colonne */
+    gap: 10px;
+    margin-left: 0;
+  }
+
+  .dashboard-container {
+    flex-direction: column; /* Passer en colonne pour petits écrans */
+  }
+
+  .content-container {
+    width: 100%; /* Prendre toute la largeur */
+    padding: 10px;
+  }
+
+  .button {
+    width: 100%; /* Bouton pleine largeur */
+    padding: 10px;
+    margin: 5px 0;
+  }
+
   h1 {
-    color: #34495e;
+    font-size: 1.5em; /* Ajustement de la taille de police */
   }
-  
+}
