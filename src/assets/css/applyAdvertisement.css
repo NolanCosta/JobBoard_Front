@@ -1,84 +1,140 @@
+/* Conteneur principal du formulaire de candidature */
 .applyAdvertisementContainer {
   width: 100%;
-  min-height: 80vh;
+  min-height: 80vh; /* Hauteur minimale */
   display: flex;
-  flex-direction: column;
-  gap: 5%;
-  padding: 2%;
-  background-color: #efecec;
+  flex-direction: column; /* Orientation verticale */
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  padding: 2%; /* Espacement autour */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  border-radius: 10px; /* Coins arrondis pour le conteneur */
 }
 
+/* Titre du formulaire */
+.applyAdvertisementContainer h2 {
+  margin-bottom: 20px; /* Espacement sous le titre */
+  font-size: 1.8em; /* Taille du texte */
+  color: #333; /* Couleur du texte */
+  text-align: center; /* Centre le texte */
+}
+
+
+
+/* Formulaire de candidature */
 .applyAdvertisementForm {
   width: 100%;
-  height: 100%;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5%;
+  align-items: stretch;
+  gap: 34px;
 }
 
+/* Conteneur des champs de saisie */
 .applyAdvertisementInputs {
-  width: 45%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: #fff;
-  box-shadow: 0 0 10px grey;
-  border-radius: 10px;
-  padding: 0 3%;
+  background-color: #ffffff; /* Fond blanc */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombre pour le champ */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 20px; /* Espacement interne */
 }
 
+/* Éléments de saisie (inputs) */
 .applyAdvertisementElement1,
 .applyAdvertisementElement2 {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: flex; /* Flexbox pour une disposition flexible */
+  justify-content: space-between; /* Espacement entre les champs */
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+  gap:3px;
 }
 
 .applyAdvertisementElement1 input,
 .applyAdvertisementElement2 input,
 .applyAdvertisementTextarea {
-  width: 49%;
-  border: 2px solid black;
-  border-radius: 10px;
-  padding: 10px;
+  flex: 1; /* Étirer les champs pour remplir l'espace */
+  min-width: 240px; /* Largeur minimum pour les champs */
+  border: 2px solid #ccc; /* Bordure douce */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 12px; /* Espacement interne */
+  font-size: 1em; /* Taille de police standard */
+  transition: border 0.3s; /* Transition douce pour les bordures */
+  margin-top: 13px;
 }
 
+/* Style du textarea */
 .applyAdvertisementTextarea {
-  width: 100%;
-  resize: none;
+  width: 100%; /* Prend toute la largeur */
+  height: 120px; /* Hauteur fixe pour le textarea */
+  resize: none; /* Désactiver le redimensionnement */
 }
 
+/* Placeholder des champs de saisie */
 .applyAdvertisementElement1 input::placeholder,
 .applyAdvertisementElement2 input::placeholder,
 .applyAdvertisementTextarea::placeholder {
-  color: #000;
-  font-weight: bold;
+  color: #999; /* Couleur plus claire pour le placeholder */
+  font-weight: normal; /* Normaliser le poids de la police */
 }
 
+/* Effet au focus sur les champs de saisie */
+.applyAdvertisementElement1 input:focus,
+.applyAdvertisementElement2 input:focus,
+.applyAdvertisementTextarea:focus {
+  border-color: #007bff; /* Bordure bleue au focus */
+  outline: none; /* Enlever le contour par défaut */
+}
+
+/* Bouton de soumission */
 .applyAdvertisementButton {
-  width: 45%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5%;
-  border-radius: 20px;
-  background-color: #fff;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0.5% 0;
+  display: flex; /* Flexbox pour le bouton */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  gap: 10px; /* Espacement autour de l'icône */
+  border-radius: 20px; /* Coins arrondis */
+  background-color: #b41f6c;
+  color: #ffffff; /* Couleur du texte blanc */
+  font-weight: bold; /* Texte en gras */
+  cursor: pointer; /* Curseur pointeur */
+  padding: 12px; /* Espacement interne */
+  border: none; /* Pas de bordure */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transitions douces */
 }
 
+/* Effet de survol pour le bouton */
 .applyAdvertisementButton:hover {
-  box-shadow: 0 0 10px grey;
-  border: 2px solid #fff;
+  background-color: #860449;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
 }
 
+/* Image dans le bouton */
 .applyAdvertisementButton img {
-  width: 5%;
-  height: auto;
+  width: 20px; /* Ajuster la taille de l'image */
+  height: auto; /* Respecte le ratio d'aspect */
+}
+
+/* Styles responsive */
+@media (max-width: 768px) {
+  .applyAdvertisementContainer {
+    padding: 3%; /* Réduire le padding sur les écrans plus petits */
+  }
+
+  .applyAdvertisementForm {
+    gap: 10px; /* Espacement réduit entre les éléments */
+  }
+
+  .applyAdvertisementTextarea {
+    height: 100px; /* Ajuster la hauteur du textarea */
+  }
+
+  /* Ajuster les éléments de saisie sur les petits écrans */
+  .applyAdvertisementElement1 input,
+  .applyAdvertisementElement2 input {
+    min-width: 100%; /* Remplir toute la largeur sur mobile */
+    margin-bottom: 10px; /* Espacement en bas */
+  }
+
+  .applyAdvertisementElement2 {
+    flex-direction: column; /* Colonne sur petits écrans */
+    align-items: stretch; /* Remplir la largeur */
+  }
 }

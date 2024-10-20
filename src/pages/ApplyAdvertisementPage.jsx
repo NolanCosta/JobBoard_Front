@@ -83,7 +83,9 @@ function ApplyAdvertisementPage() {
     <div>
       <Header />
       <div className="applyAdvertisementContainer">
+        
         <h2>Remplir les informations pour postuler :</h2>
+       
         <form
           className="applyAdvertisementForm"
           onSubmit={(e) => handleSubmit(e)}

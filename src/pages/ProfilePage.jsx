@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Header from "../components/layout/header.jsx";
 import { AuthContext } from "../components/context/AuthContext.jsx";
-import Logout from "./Auth/Logout.jsx";
 import Footer from "../components/layout/footer.jsx";
 import profileLogo from "../assets/image/profile.png";
 import pingLogo from "../assets/image/ping.png";
@@ -116,7 +115,7 @@ function ProfilePage() {
           </div>
         </div>
         <div className="profileActionsButtons">
-          <Logout />
+         
           <button className="profileButtonDelete" onClick={handleDelete}>
             Supprimer mon compte
           </button>

@@ -643,7 +643,7 @@ function TableJobs() {
         <div className="ag-theme-quartz " style={{ height: 150 + 40 * 10 }}>
           <AgGridReact
             columnDefs={colDefs} // Définition des colonnes
-            rowData={rowData} // Les données des utilisateurs
+            rowData={rowData} // Les données des annonces
             pagination={true} // Activer la pagination
             paginationPageSizeSelector={[10, 25, 50]}
             paginationPageSize={10} // Nombre d'éléments par page
