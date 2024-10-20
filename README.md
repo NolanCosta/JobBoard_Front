@@ -27,21 +27,6 @@ npm -v
 
 ```
 
-### etape 1 
-
-Créer un nouveau projet React
-
-Dans le terminal, exécutez la commande suivante pour créer un nouveau projet React avec Create React App :
-
-
-```bash
-
-npx create-react-app nom-du-projet
-
-```
-
-Remplacez `nom-du-projet` par le nom de votre projet souhaité.
-
 Dans le terminal, exécutez la commande suivante pour démarrer le serveur de développement :
 
 
@@ -263,6 +248,40 @@ Les pages sont situées dans le dossier src/pages. Voici une description détail
 
 Les services sont situés dans le dossier src/service. Ils contiennent la logique métier et les appels API nécessaires pour le fonctionnement de l'application.
 
+
+### Assets 
+
+Les assets de notre projet JOBBOARD sont situés dans le dossier assets et contiennent les ressources utilisées par l'application, telles que les fichiers CSS, les images, et d'autres fichiers multimédias:
+
+`CSS`
+
+Ce sous-dossier contient les fichiers CSS utilisés pour styliser le site. Voici quelques exemples de fichiers CSS que l'on pourrait trouver dans ce dossier :
+
+- Footer.css : Le fichier CSS spécifique pour styliser le composant Footer.
+- Header.css : Le fichier CSS spécifique pour styliser le composant Header.
+
+`Ìmage`
+
+Ce sous-dossier contient les images utilisées du site. Voici quelques exemples de types d'images que l'on pourrait trouver dans ce dossier :
+
+- Logo du site 
+- Les icons utilisées du site
+
+exemple de notre stucture : 
+
+```
+assets/
+    image/
+        logo.png
+        addusers.png
+        epitech.jpg
+        send.png
+        profile.png
+        ...
+```
+
+Les dossiers assets est essentiel à l'organisation du projet Jobboard, pour gerer les ressources et de les séparer.
+
 ### technologies utilisées : 
 ```
 React : Une bibliothèque JavaScript pour construire des interfaces utilisateur.
@@ -276,4 +295,4 @@ npm : Un gestionnaire de paquets pour installer les dépendances du projet.
 ```
 
 ### Conclusion
-Ce projet JOBBOARD est une application complète de gestion d'offres d'emploi, développée avec React. Elle permet aux utilisateurs de consulter et de postuler à des offres d'emploi, ainsi que de gérer leurs profils et leurs entreprises.
+Ce projet JOBBOARD est une application de gestion d'offres d'emploi, développée avec React. Elle permet aux utilisateurs de consulter et de postuler à des offres d'emploi, ainsi que de gérer leurs profils et leurs entreprises.
