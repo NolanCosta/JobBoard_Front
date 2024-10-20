@@ -1,0 +1,159 @@
+/* .footer {
+  width: 99vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  padding-bottom: 1%;
+} */
+
+/* Footer Container */
+.footer-container {
+  color: black;
+  padding: 40px 0 0 0;
+  border-top: 2px solid black;
+  margin-top: 30px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo img {
+  max-width: 250px;
+  height: auto;
+}
+
+.footer-contacts,
+.footer-social {
+  margin: 0 20px;
+}
+
+.footer-contacts h3,
+.footer-social h3 {
+  color: rgb(153, 7, 7);
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.footer-contacts ul,
+.footer-social ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-contacts ul li,
+.footer-social ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Liens */
+.footer-contacts ul li a,
+.footer-social ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-contacts ul li a:hover,
+.footer-social ul li a:hover {
+  color: rgb(153, 7, 7);
+}
+
+.footer-bottom {
+  text-align: center;
+  background-color: #222;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: white;
+}
+
+.social-links li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.logo {
+  width: 30px;
+  height: auto;
+}
+
+/* Pour les tablettes (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo img {
+    max-width: 200px; /* Réduction de la taille du logo pour tablette */
+  }
+
+  .footer-contacts,
+  .footer-social {
+    margin: 20px 0; /* Espacement supplémentaire pour les éléments */
+  }
+
+  .footer-contacts h3,
+  .footer-social h3 {
+    font-size: 18px;
+  }
+
+  .footer-contacts ul li,
+  .footer-social ul li {
+    font-size: 14px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+  }
+}
+
+/* Pour les téléphones (max-width: 768px) */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .footer-logo img {
+    max-width: 150px; /* Réduction encore plus petite du logo pour mobile */
+  }
+
+  .footer-contacts h3,
+  .footer-social h3 {
+    font-size: 16px;
+  }
+
+  .footer-contacts ul li,
+  .footer-social ul li {
+    font-size: 12px;
+  }
+
+  .footer-contacts,
+  .footer-social {
+    margin: 15px 0; /* Moins d'espacement pour les petits écrans */
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+  }
+}

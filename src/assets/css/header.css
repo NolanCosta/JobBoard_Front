@@ -1,0 +1,235 @@
+/* Styles généraux */
+
+.navbar {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  height: 15vh !important;
+  align-items: center !important;
+  border-bottom: 1px solid black;
+}
+
+.logo1 {
+  height: 100%;
+  margin-left: 2%;
+}
+
+.menu {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.menu a {
+  position: relative;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: 50% 50%;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  transition: transform 250ms;
+}
+
+.menu a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.toggle-container {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 200px;
+  height: 40px;
+}
+
+.toggle-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-button.active {
+  background-color: black;
+  color: white;
+}
+
+.toggle-button:not(.active) {
+  background-color: white;
+  color: black;
+}
+
+.toggle-button:first-child {
+  border-right: 1px solid black;
+}
+
+.ecart {
+  display: flex;
+  gap: 65px;
+  align-items: center;
+}
+
+/* Burger menu */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  margin-right: 2%;
+}
+
+.burger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menu mobile */
+.menu-mobile {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+
+.menu-mobile a {
+  padding: 10px 0;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-mobile a:hover {
+  background-color: #f0f0f0;
+}
+
+.menu-mobile.open {
+  display: flex;
+}
+
+/* Responsive design */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: row !important;
+    height: auto !important;
+    padding: 10px 2% !important;
+  }
+
+  .logo1 {
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .menu {
+    width: 60%;
+    justify-content: end;
+    gap: 64px;
+  }
+
+  .menu a {
+    font-size: 13px;
+  }
+
+  .ecart {
+    gap: 40px;
+  }
+
+  .toggle-container {
+    width: 180px;
+    height: 35px;
+  }
+
+  .toggle-button {
+    font-size: 14px;
+  }
+}
+
+/* Téléphones */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row !important;
+    padding: 5px 2% !important;
+  }
+
+  .logo1 {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .menu {
+    display: none; /* Masquer le menu classique */
+  }
+
+  .burger {
+    display: flex; /* Afficher le bouton burger */
+  }
+
+  .menu-mobile.open {
+    display: flex; /* Afficher le menu mobile quand le burger est ouvert */
+  }
+
+  .menu-mobile {
+    display: none; /* Cacher le menu mobile par défaut */
+  }
+
+  .menu-mobile a {
+    font-size: 12px;
+    margin: 5px 0;
+  }
+
+  .ecart {
+    gap: 20px;
+  }
+
+  .toggle-container {
+    width: 150px;
+    height: 30px;
+  }
+
+  .toggle-button {
+    font-size: 12px;
+  }
+}

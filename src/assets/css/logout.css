@@ -1,0 +1,70 @@
+/* Styles de base pour le bouton Logout */
+.buttonLogout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  color: #343a40; 
+  padding: 10px 20px; 
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;  /* Pour l'animation ::after */
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+
+}
+
+.buttonLogout::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);  /* Initialement caché */
+  transform-origin: 50% 50%;
+  width: 100%;
+  height: 2px;  
+  background-color: #343a40;
+  transition: transform 250ms;
+}
+
+.buttonLogout:hover::after {
+  transform: translateX(-50%) scaleX(1);  /* Ligne s'étend en largeur */
+}
+
+
+.imgLogout {
+  width: 20px; 
+  height: auto;
+}
+
+
+
+
+/* Ordinateur - écrans larges */
+@media (max-width: 1024px) {
+  .buttonLogout {
+    font-size: 13px;
+    padding: 12px 25px;
+  }
+
+  .imgLogout {
+    width: 24px;
+  }
+}
+
+
+/* Téléphone - écrans petits */
+@media (max-width: 767px) {
+  .buttonLogout {
+    font-size: 12px;
+    padding: 8px 15px;
+    gap: 8px;
+  }
+
+  .imgLogout {
+    width: 18px;
+  }
+}

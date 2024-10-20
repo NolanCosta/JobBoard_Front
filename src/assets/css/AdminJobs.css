@@ -1,0 +1,148 @@
+
+/* css page advertisementadmin  */
+
+.size-table {
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.table {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.admin-jobs-table-container {
+  padding: 20px;
+}
+
+.actionsUserAdmin {
+  display: flex;
+  justify-content: space-around;
+}
+
+.deleteUserAdmin,
+.editUserAdmin {
+  background-color: transparent;
+  border: none;
+}
+
+.deleteUserAdmin img,
+.editUserAdmin img {
+  width: 35%;
+  height: auto;
+}
+
+/* add users  */
+
+.logousers {
+  width: 4%;
+  height: 4%;
+  border-radius: 10%;
+  background-color: transparent;
+  border: none;
+}
+
+.logoa {
+  width: 80%;
+}
+
+.addAdvertisement {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4%;
+
+}
+
+/* Style de base pour le formulaire */
+.advertisement-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.inputMultiple {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputMultiple button {
+  margin-bottom: 15px;
+}
+
+.renderElements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+}
+
+.renderElements p {
+  padding: 0.5% 2%;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+}
+
+.deleteElement {
+  border: none;
+  background-color: transparent;
+  font-size: x-small;
+}
+
+
+@media (max-width: 1024px) {
+
+
+  .logousers {
+    width: 7%;
+    height: 7%;
+  }
+
+  .deleteUserAdmin img,
+  .editUserAdmin img {
+    width: 62% !important;
+    height: auto !important;
+  }
+}

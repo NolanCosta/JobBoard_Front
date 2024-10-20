@@ -1,0 +1,203 @@
+/* Style global pour la page de profil */
+
+
+.profileContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+  background-color: #f4f4f9; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  border-radius: 10px; 
+  margin-bottom: 55px;
+  margin-top: 45px;
+}
+
+
+.infosProfile {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff; 
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  margin-bottom: 50px; 
+  margin-top: 50px; 
+}
+
+/* Séparateur vertical */
+.separateDivProfile {
+  height: 100px; 
+  width: 1px;
+  background-color: #e0e0e0; 
+}
+
+/* Première partie du profil */
+.part1Profile {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Prendre de l'espace disponible */
+}
+
+.profileIcon {
+  width: 80px; 
+  height: auto;
+  border-radius: 50%; 
+  margin-right: 15px; 
+}
+
+/* Noms */
+.nameProfile {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em; 
+  color: #333; 
+}
+
+.firstnameProfile,
+.lastnameProfile {
+  margin: 0;
+}
+
+/* Deuxième partie du profil */
+.part2Profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* Contacts */
+.contactProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacement entre les éléments */
+}
+
+.contactElementProfile {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+.contactElementProfile img {
+  width: 25px; 
+  height: auto;
+}
+
+/* Bouton d'édition */
+.buttonProfile {
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer;
+}
+
+/* Troisième partie du profil */
+.part3Profile {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.companyLinkProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3d4ccc;
+  color: white; 
+  border-radius: 25px; 
+  padding: 10px 20px; 
+  text-decoration: none;
+  transition: background-color 0.3s; 
+}
+
+
+.companyLinkProfile:hover {
+  background-color: #0056b3; 
+}
+
+/* Action du bouton de suppression */
+.profileActionsButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profileButtonDelete {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; 
+  background-color: #dc3545; 
+  color: white; 
+  font-weight: bold;
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.profileButtonDelete:hover {
+  background-color: #c82333; 
+}
+
+/* Styles responsive */
+@media (max-width: 768px) {
+  .infosProfile {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .separateDivProfile {
+    display: none; 
+  }
+
+  .part1Profile,
+  .part2Profile,
+  .part3Profile {
+    width: 100%; 
+    justify-content: center; 
+    margin-bottom: 10px;
+  }
+
+  .profileIcon {
+    width: 60px; 
+  }
+
+  .nameProfile {
+    font-size: 1.3em; 
+  }
+
+  .contactElementProfile img {
+    width: 20px;
+  }
+
+  .companyLinkProfile {
+    padding: 10px; 
+    font-size: 0.9em; 
+  }
+
+  .profileButtonDelete {
+    width: 100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .profileContainer {
+    padding: 10px; 
+  }
+
+  .nameProfile {
+    font-size: 1.1em; 
+  }
+
+  .contactProfile {
+    font-size: 0.9em; 
+  }
+
+  .profileIcon {
+    width: 50px; 
+  }
+}

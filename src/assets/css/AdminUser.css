@@ -1,0 +1,204 @@
+/* css page useradmin  */
+
+.size-table {
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.table {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+
+.actionsUserAdmin {
+  display: flex;
+  justify-content: space-around;
+}
+
+.deleteUserAdmin,
+.editUserAdmin {
+  background-color: transparent;
+  border: none;
+}
+
+.deleteUserAdmin img,
+.editUserAdmin img {
+  width: 20%;
+  height: auto;
+}
+
+
+/* add users  */
+
+.logousers{
+    width: 4%;
+    height: 4%;
+    border-radius: 10%;
+    background-color: transparent;
+    border: none;
+}
+
+.logoa{
+    width: 80%;
+    
+}
+
+.adduser{
+    display: flex;
+    margin-left: 4%;
+   
+}
+
+
+.form {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .user-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .form-input {
+    flex: 1;
+    margin-right: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    min-width: 150px; 
+  }
+  
+
+  .user-form input:last-child {
+    margin-right: 0;
+  }
+  
+
+  .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+ 
+  .form-button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #5d9159;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 25%; 
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form-button:hover {
+    background-color: #60a773;
+  }
+
+
+  /* css update  */
+  
+  .admin-user-table-container {
+    padding: 20px;
+  }
+  
+  .admin-user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .admin-user-table th, .admin-user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .admin-user-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .edit-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  
+  .edit-form .form-row {
+    margin-bottom: 15px;
+  }
+  
+  .edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .edit-form input, .edit-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .edit-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-form button:hover {
+    background-color: #45a049;
+  }
+  
+  @media (max-width: 1024px) {
+
+    .form {
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 15px;
+      background-color: #f8f9fa;
+    
+    }
+
+    .deleteUserAdmin img,
+    .editUserAdmin img {
+        width: 35% !important;
+        height: auto !important;
+}
+
+  }
+
+  @media (max-width: 768px) {
+    
+
+
+
+
+  }
